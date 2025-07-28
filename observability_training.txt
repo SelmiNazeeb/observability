@@ -1,7 +1,5 @@
-i am studying about observability and its tools.now i am seering a video of observability basic training. give me proper answers for my doubts when i ask
 OBSERVABILITY
 ===============
-
 Observability helps teams maintain healthier systems, improve performance, and reduce costs by providing better insights and faster detection of issues
 
 SRE
@@ -183,3 +181,11 @@ Open Telemetry helps collect and send observability data (logs, metrics, traces)
 
 Code -> API -> SDK -> Exporters -> Receivers -> Processors -> Prometheus, Jaeger, Lightstep
 	Client           ->              Collector         ->       Storage 
+
+Observability tool recommendation
+-----------------------------------
+⦁	User friendly interface (easy to navigate and commercially viable)
+⦁	Supply real time data (API s to collect real time data)
+⦁	work on open source agents ( reducing system memory, CPU)
+⦁	Easy to implement
+⦁	integrate with your current tool stack 
