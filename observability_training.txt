@@ -1,0 +1,185 @@
+i am studying about observability and its tools.now i am seering a video of observability basic training. give me proper answers for my doubts when i ask
+OBSERVABILITY
+===============
+
+Observability helps teams maintain healthier systems, improve performance, and reduce costs by providing better insights and faster detection of issues
+
+SRE
+---
+Imagine you have a super important online store, like Amazon. If it goes down even for a few minutes, you lose a ton of money and customers get really frustrated...Here SRE comes.
+It's about making sure things always work
+They use code to fix problems
+plan for failure
+
+code optimization
+------------------
+You optimize code to make it faster and more resource-efficient.
+Refactoring - help us to do code optimization
+	    - You refactor code to make it easier to understand and change
+
+reliability and resilience
+--------------------------
+-> Both  are system's ability to handle problems
+-> reliability - ability of a system or an application to perform its desired function without undergoing failure.
+	       - reliability is like avoiding failure.
+	       - Build with strong foundation like should not fail under normal expected condition.
+-> resilience  - how to handle when the failure happen.
+               - backups(redundancy), fault tolerance (design like continues working even some part fails)
+
+"" In modern distributed systems (like microservices in the cloud), resilience is incredibly important. You can't prevent every component from failing, so you design for failure. You assume parts will break, and you build the system to withstand and recover from those breakages without affecting the user experience significantly. This is where concepts like "Site Reliability Engineering (SRE)" really shine, as they blend traditional reliability practices with a strong focus on resilience ""
+
+monitoring, observability and telemetry
+----------------------------------------
+monitoring 
+----------
+- infrastructure monitoring and application monitoring
+- set some threshold to the parameters. If it goes beyond the threshold (because of multiple reasons), take actions
+
+Big puzzle
+----------
+graph of awareness(data available) and understanding
+- known knowns -> You know the problem and you know the solution.
+		  metrics and logs that your monitoring tools already track well
+- known unknowns -> You see the problem but don’t yet know the solution.
+	            You notice anomalies or patterns in the system but don’t understand why they occur
+- unknown knowns -> You don’t realize there’s an issue, but a solution is possible.
+ 	            There are hidden problems that haven’t been detected yet.
+- unknown unknowns -> You don’t know the problem or solution — it’s completely unexpected.
+	              These are blind spots where you have no data or insights.
+		      A sudden failure caused by a rare or new bug
+
+core analysis group
+-------------------
+- Start by clearly defining the question or problem you want to investigate
+- Look at your telemetry data (metrics, logs) to identify any unusual patterns or anomalies in performance
+- Once you identify an anomaly, dig deeper by grouping or filtering the data based on various dimensions (e.g., service name, host, user ID, region). This      helps isolate common characteristics that causing the anomaly.
+- Evaluate if the filtering/grouping has pinpointed likely sources or root causes of the anomaly. If yes, you have your answer; if not, the loop continues by refining your question or trying different groupings.
+
+scenario :-
+	your web app is slow
+Step 1: What are you trying to understand?
+You want to understand why your web app is slow for users.
+
+Step 2: Visualize telemetry data
+Look at metrics like response time, latency using monitoring tools (Grafana) 
+
+Step 3: group/filter telemetry data by:
+	Geographic region (Are only users in a specific region affected?)
+	Browser or device type (Is it slow only on mobile or a certain browser?)
+
+Say you discover the spike only happens for users in Europe using Chrome.
+
+Step 4: Has this isolated likely dimensions that identify potential sources of the anomaly?
+Yes — you’ve isolated the problem to users in Europe using Chrome. This is a strong lead.
+Now you can:
+Check if a recent deployment changed something in that region or for Chrome users
+
+toil
+
+symptoms and causes
+--------------------
+symptom - what is the problem
+cause - why the problem
+
+pillars of observability
+	- metrics
+	- logs
+	- traces
+	- Events and Profiles as additional pillars
+
+Monitoring - includes alerting, service health overview, and investigation.
+	   - passive and happens all the time (ops)
+	   - traffic, latency, throughput
+Observability - dives deeper into debugging, profiling system behavior, and dependency analysis (tracking infrastructure)
+	      - reactive and happens on the fly (when issues arise)(Dev)
+	      - metrics, events, logs, traces
+
+scenario:
+	Symptom: The website is slow or broken.
+	Cause: The real reason behind it (database issue, database connection failed, timeout error, bug, etc.).
+
+key benefits of observability
+-------------------------------
+- Higher visibility
+- Better workflow
+- Faster alerts
+- Finding out unknown issues
+- Improved user experience
+- Reduced operational cost
+- Increased developer velocity
+
+Golden Signals of Monitoring
+------------------------------
+- Traffic: Represents the amount of demand on your system.
+- Errors : Application errors or system failures
+- Latency: how long the system takes to respond
+- Saturation: Indicates when resources are reaching their limits.
+
+service map - visual representation of the different services in a system and how they interact with each other.
+Topology    - multilayered map
+	    - in IT is like a detailed map of your network and services, helping you see how everything is connected, flowing, and where issues might be  	      happening—just like Google Maps shows roads, traffic, and jams.
+
+Observability types
+	- Causal observability (we need to look at the different causes, which means you need to also look at topology of the entire life cycle)
+	- topology based observability
+	- time travel observability
+
+
+4 Ts
+-----
+topology (structure)
+telemetry (data collection)
+tracing (tracking interactions)
+time (sequence)
+
+timeline graph - helps to clearly understand the cause of a problem (e.g. slow down of app is due to the updation by developers)
+
+DataOps
+--------
+DataOps makes sure that the data observability tools use is fast, reliable, secure, and high-quality, which helps you understand and monitor your systems better.
+
+Why is DataOps Needed in Observability????
+Faster Data Integration - DataOps allows quick and continuous addition of new data sources, so observability systems always have the latest information.
+Reliable Data Flow - Ensures smooth, error-free movement of data across different systems, which is crucial for accurate monitoring.
+Automation - Automates repetitive tasks like data collection and processing, making observability scalable and reducing manual errors.
+Improved Data Security - Integrates security practices into data handling, protecting sensitive monitoring data from breaches.
+Better Data Quality & Insights - Helps catalog and score data quality, so observability can rely on trustworthy data for decision-making.
+
+CIA Triad
+---------
+Confidentiality — Protecting data from unauthorized access.
+Integrity — Ensuring data is accurate and hasn’t been tampered with.
+Availability — Ensuring data and systems are accessible when needed.
+
+DIE Triad
+----------
+Distributed - Observability data (logs, metrics, traces) is collected across many systems and locations
+Immutable - it should not be changed or deleted (consistent)
+Ephemeral - observability data is short-lived and only needed temporarily.reduce storage costs
+
+Observability Pipeline 
+-----------------------
+libraries/Agents -> processing -> storage -> UI -> User
+
+ELK stack
+libraries/ Agents - Data Propagation (These are small programs or scripts running on your web servers or applications)
+Logstash - processing area (This processes the logs and forwards them)
+elastic search - storage (Stores all processed logs in a searchable database)
+Kibana or Grafana - UI (Visualization layer: dashboards)
+Devops Team - User (Your operations team uses Kibana to monitor system health and act on alerts before users complain)
+
+Move from monitoring to observability?
+	- do metrics, tracers and logs
+	- utilization of open telemetry and open metrics
+	- usage of AI
+	- Automated remediation of incidents using ML
+
+RUM - Real User Monitoring
+MTTD - mean time to detect
+
+Open telemetry
+--------------
+Open Telemetry helps collect and send observability data (logs, metrics, traces) from your application to tools like Prometheus, Jaeger, or Lightstep for analysis and visualization.
+
+Code -> API -> SDK -> Exporters -> Receivers -> Processors -> Prometheus, Jaeger, Lightstep
+	Client           ->              Collector         ->       Storage 
