@@ -177,15 +177,346 @@ MTTD - mean time to detect
 
 Open telemetry
 --------------
-Open Telemetry helps collect and send observability data (logs, metrics, traces) from your application to tools like Prometheus, Jaeger, or Lightstep for analysis and visualization.
+- It's a project under the Cloud Native Computing Foundation (CNCF) and is becoming the standard for observability
+- Open Telemetry helps collect and send observability data (logs, metrics, traces) from your application to tools like Prometheus, Jaeger, or Lightstep for analysis and visualization.
+
+Signals
+
+Open Telemetry works with three types of telemetry signals:
+
+    Signal		Description					Example
+
+📏 Metrics	    Numerical values about system performance		CPU %, request duration
+🧭 Traces	    Show the flow of a request through services		Trace ID from frontend → backend
+📝 Logs	Event       data with timestamps			        Errors, warnings, info messages
 
 Code -> API -> SDK -> Exporters -> Receivers -> Processors -> Prometheus, Jaeger, Lightstep
 	Client           ->              Collector         ->       Storage 
 
+- Add the code to your application to collect telemetry data
+- API will defines the structure and behavior of the telemetry data.
+- SDK contains the logic for collecting, processing, and exporting telemetry data
+- Exporters are components that send the collected telemetry data from the SDK to external systems
+- Receivers receive telemetry data from exporters and format it according to need of collector.
+- Processors will process the data with some modification like filtering, remove unwanted and add additional metadata (optional)
+- exporters will again send this to destination, observability tool/backend
+- backend is observability tools like Prometheus, jaeger. this will store, analyze and visualize telemetry data 
+
 Observability tool recommendation
 -----------------------------------
-⦁	User friendly interface (easy to navigate and commercially viable)
-⦁	Supply real time data (API s to collect real time data)
-⦁	work on open source agents ( reducing system memory, CPU)
-⦁	Easy to implement
-⦁	integrate with your current tool stack 
+* User friendly interface (easy to navigate and commercially viable)
+* Supply real time data (API s to collect real time data)
+* work on open source agents ( reducing system memory, CPU)
+* Easy to implement
+* integrate with your current tool stack 
+
+Goals of Your Role:
+Minimize Mean Time to Detect (MTTD)
+Minimize Mean Time to Resolve (MTTR)
+Enable proactive problem detection
+Support teams with actionable insights
+
+DAY2
+----
+SRE
+----
+Error budgets
+-------------
+Naive approach
+	- Availability = (Good Time) / (Total Time)
+	- This tells you how often the system is up and working correctly.
+
+Error budget
+	- way to quantify how much unreliability is acceptable.
+	- If your Service Level Objective (SLO) says your service should be available 99.9% of the time, then:
+		 You are allowed to be down for 0.1% of the time.
+		 Then 0.1% is your error budget.
+
+More Sophisticated Approach
+	- Availability = Good Interactions / Total Interactions
+	- Rather than just checking whether a system is "up" or "down", this checks whether real users are having successful interactions with service.
+	- Example: A web page may load fine for some users and fail for others — this method captures that reality.
+	- If SLO says 99.95% of user requests should succeed each month
+		Then your error budget - 0.05% of user requests are allowed to fail.
+		This is more meaningful than just saying “we were up for X minutes,” because user experience is what matters.
+
+SLI – Service Level Indicator
+	- SLI = actual performance
+	- actual thing we measure
+	- EG: How many requests are successful?
+SLO – Service Level Objective
+	- SLO = SLI + target (goal)
+	- goal or target based on the SLI.
+	- EG: We want 99.9% of requests to succeed in a month
+SLA – Service Level Agreement
+	- SLA = SLO + legal/business consequences
+	- If the target is missed, there could be penalties like money back. usually made with client.
+	- EG: We promise 99.5% uptime. If not, we give a 10% refund
+
+Product Lifecycle Steps
+-------------------------
+1. Concept
+	The idea stage: What problem are we solving? What product should we build?
+2. Business
+	Making a business case: Is it profitable? Who is the customer? What are the goals?
+3. Development
+	The software engineering phase: Building the product, writing code, testing features.
+4. Operations
+	Once the product is live, this team runs and monitors it: servers, uptime, performance, etc.
+5. Market
+	The product is used by customers, generating revenue and business value.
+
+Where SRE and SLOs Fit In
+	During development → SRE helps set SLOs (like 99.9% uptime)
+	During operations → SRE monitors performance and manages error budgets
+	During market phase → reliability affects customer satisfaction and trust
+
+Areas of Practice
+-----------------
+1. Metrics & Monitoring
+	- Tracking the health of systems.
+	- Purpose: Know when something is wrong before users complain.
+	- Example tools: Prometheus, Grafana, Datadog.
+	- monitoring, alerting
+- Types of alerts:
+	Page: Needs immediate human response (example: site is down).
+	Ticket: Human action is needed, but not urgent (example: disk space getting low).
+- Only involve humans when SLO is at risk: 
+	Don't make people stare at dashboards all day.
+	Let automation do the watching.
+	Involve humans only when reliability is at risk.
+
+2. Capacity Planning
+	- Ensuring systems have enough resources (CPU, memory, etc.) to handle expected traffic.
+	- Purpose: Prevent outages due to overload.
+	- Example: Predicting traffic growth and upgrading servers accordingly.
+
+-Plan for organic growth
+	What it means: Prepare for natural increase in system usage over time.
+	Why it happens: More users adopting the product, regular usage increases.
+	Example: A popular app slowly gaining new users each month.
+	Action: Ensure system scales gradually with demand (e.g., more servers, better load balancers).
+
+- Determine inorganic growth
+	What it means: Prepare for sudden spikes in traffic or demand.
+	Why it happens: Feature launches, marketing campaigns, seasonal sales.
+	Example: E-commerce site during a festival sale or product launch event.
+	Action: Add capacity in advance, use autoscaling or cloud bursting.
+
+- Correlate raw resources to service capacity
+	What it means: Match the hardware or cloud resources (CPU, memory, storage) to the actual service performance needed.
+	Goal: Avoid both overprovisioning (wasting money) and underprovisioning (causing outages).
+	Action: Use monitoring data to predict needs and adjust accordingly.
+
+3.Change Management
+	- Managing updates, deployments, and system changes carefully.
+	- Purpose: Reduce risk of failure when pushing new features or code.
+	- Tools used: CI/CD pipelines (Jenkins, GitHub Actions), change approval processes.
+- Provisioning 
+	Provisioning = Capacity Planning + Change Management
+	Provisioning means adding resources (like servers) when needed — but doing it fast and safely.
+
+4. Emergency Response
+	- Handling incidents quickly when things break.
+	- Purpose: Minimize downtime and impact on users.
+	- Includes: On-call rotations, incident runbooks, alert systems.
+
+5. Culture
+	- Encouraging collaboration, learning from failures, and shared ownership.
+	- Purpose: Build trust and resilience across teams.
+	- Practices: Blameless postmortems, continuous improvement, open communication.
+Incident and postmortem threshold - “If a problem causes downtime, data loss, needs manual fixing, or takes too long — treat it as an incident and write a postmortem to learn from it.”
+- Incident
+	An incident is when something goes wrong in your system — like a website or app breaking, becoming slow, or losing data
+- postmortem
+	It’s a document that explains:
+		What happened
+		Why it happened
+		What can we do to prevent it next time
+- incident & postmortem thresholds
+	rules that help you decide:
+		Is this problem serious enough to treat as an incident and write a postmortem?
+- You must treat it as an incident if:
+	*Users are affected
+		Example: The app is down or too slow for users for more than 5 minutes.
+	*Data is lost
+		Example: Some user messages or orders are gone — even if it's just a few.
+	*An engineer had to jump in
+		Example: Someone had to rollback a release, or change traffic routing manually to fix it.
+	*It took too long to fix
+		Example: Your target is to fix issues in 15 minutes, but this one took 1 hour.
+
+Toil 
+------
+Toil means the boring, repeated work you have to do to keep a system running.
+disadvantage : 
+	It wastes time and energy.
+	It burns out engineers.
+	It doesn’t help improve reliability.
+advantage :
+	Understand failures better.
+	Decide what to automate.
+	Realize where systems need improvement.
+what counts toil ?
+	Manual → You have to run something by hand (e.g., a script).
+	Repetitive → You do it again and again (e.g., onboarding new users manually).
+	Automatable → A computer could do it. No thinking required.
+	Tactical → It's reactive (you do it only when something breaks).
+	No lasting value → It doesn’t make your system better over time.
+	Scales badly → As your users grow, toil grows to
+""SREs should minimize toil as much as possible using automation""
+
+-------------------------
+PLURASIGHT VIDEO
+-------------------------
+	3 pillars
+	----------
+> metrics - snapshot of set of numbers. Metrics are numbers + context, collected regularly and stored with timestamps.
+> logs - chunks of structured text
+> traces - Seeing the full path of a user request across the system
+
+	service hotel
+	--------------
+SRE team give a platform to production team to run their application.
+Features in this platform: observability, autoscaling, health check, self repair, automated deployment and management 
+> Platform - hotel : provides services (like monitoring, scaling, logging, networking, etc.) to applications.
+> apps - guests : like your business services or microservices. Monolithic and Distributed 
+> contract - rules : Just like hotels have rules for guests, the SRE team also sets expectations for applications.
+	✅ App should expose health checks (so the platform knows if it’s healthy)
+	✅ App should write logs to a known location
+	✅ App should handle restarts gracefully (important for auto-scaling)
+	✅ App should follow naming and tagging conventions (for metrics/tracking)
+> The platform (SRE team) is ready to support any app, but only if the app follows some clear rules.
+
+	Tracing
+	--------
+Why tracing matters?
+	- It shows where time is spent when handling a request (e.g., loading a webpage).
+	- Helps find slow parts in the system (e.g., database delay).
+	- Can be linked to logs using the Trace ID, so you see both high-level and detailed views together
+How it works?
+	A trace is made of spans (small pieces of the request journey).
+	Each component (website, API, DB) adds its own span:
+		Start time, End time, Who its "parent" is (who called it)
+	👉 Example:
+	   User hits the homepage → Span 1 starts
+	   Website calls API → Span 2 starts
+	   API calls DB → Span 3 starts
+	   Each ends its span when done
+	   All spans are connected into one full trace
+How data is handled?
+	Spans are sent to a central tracing system
+	Data is: Collected, Processed, Stored for dashboards or investigations
+
+Main Requirements from SRE Team for Tracing
+--------------------------------------------
+✅ Must-Haves (Essential Rules)
+> Use OpenTelemetry (OTel):
+	All app components must follow OTel standards for tracing.
+		They generate spans using OTel format
+		They send those spans to a central OTel endpoint
+> Support Sampling:
+	Tracing every request is too expensive
+	So apps should be able to only trace a small % (like 10%).This is called sampling.
+> Use Standard OTel Configurations:
+	All apps should use same config style so that it’s easy to manage them.
+
+🟡 Should-Haves (Strongly Recommended)
+> Use OTel Libraries (for java, python etc.)Instead of Writing Your Own Code
+> Include Extra Context in Spans:
+	Add useful info like: user ID, request ID
+	This helps during debugging and analysis.
+> Connect Logs and Traces via Trace ID:
+	If your app logs include the Trace ID, it’s easier to Jump from logs to traces, Understand the full picture of a problem
+
+🟢 Could-Haves (Nice Extras)
+> Auto Spans:
+	OTel libraries can automatically track:
+		Incoming requests (e.g. HTTP calls to your app)
+		Outgoing requests (e.g. when your app calls an API)
+> Custom Spans:
+	You can also manually add spans in your code which helps you see how much time these take inside the full trace
+	Useful for key parts like:
+		Database queries
+		Expensive calculations
+
+GRAFANA
+--------
+Visual Features in Grafana
+	Service Graph: Shows how components are connected.
+	Trace Drilldown: Shows time taken in each step.
+	Tempo Metrics: Tracks average trace durations and traffic.
+
+Current Platform (Split Stack)
+------------------------------
+Logging Pipeline
+	Fluentd → Elasticsearch → Kibana
+Tracing Pipeline
+	OpenTelemetry Collector → Tempo → Grafana
+Metrics
+	Tempo generates metrics → Prometheus → Grafana
+
+🎯 Problem: Logs and traces are collected through different systems, making it harder to manage and unify observability.
+
+Future Platform (Unified with OpenTelemetry)
+----------------------------------------------
+Single Collector
+	OpenTelemetry Collector handles logs, metrics, and traces
+Data Routing
+	Traces → Tempo
+	Logs → Loki
+	Metrics → Prometheus
+Storage
+	MinIO stores log/trace data (backend for Loki)
+UI- Grafana shows:
+	Logs from Loki
+	Traces from Tempo
+	Metrics from Prometheus
+
+🎯 Advantage: Unified one collector + one UI for all observability signals. Easier to scale, debug, and manage.
+
+How Metrics Help Create SLIs and Meet SLOs
+-------------------------------------------
+Looking at HTTP response codes:
+	100 responses were 200 OK (success)
+	3 responses were errors
+	So, success rate = 100 / (100 + 3) = 97%
+	➤ This means we are below our SLO and need to improve
+For response time:
+	100 responses sent, total time taken = 28 seconds
+	So average time = 28 / 100 = 0.28 seconds
+	➤ This is within our SLO if we want response times < 0.5s.
+
+Metrics:Port - used to publish metrics on a separate port to hide them from users.
+
+	ALERTING
+       ----------
+If SLI didn't meet the SLO , it should alert in a form of ticket or Page
+	- Page = High priority, needs immediate response
+	- Ticket = Low priority, fix when possible
+> small spike for short time - no alert needed
+> large spike for short time - may or may not needed. if needed, page
+> moderate spike for long time - page needed
+> mixed issue for long time - ticket 
+
+How Do We Decide When to Alert?
+
+1. Precision 
+	Only alert when it’s really needed
+	Avoid false alarms
+
+2. Recall 
+	Avoid missing important issues
+
+3. Detection Time
+	How quickly can we detect and alert?
+	Faster = Better, so we can fix before users notice
+
+4. Reset Time
+	How quickly do we turn off the alert once the system is OK again?
+	Avoid bothering people when the issue is already fixed
+
+Burn rate = How fast are we using up our error budget
+
+
+
