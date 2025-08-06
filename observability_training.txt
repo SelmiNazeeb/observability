@@ -516,7 +516,145 @@ How Do We Decide When to Alert?
 	How quickly do we turn off the alert once the system is OK again?
 	Avoid bothering people when the issue is already fixed
 
-Burn rate = How fast are we using up our error budget
+- Burn rate = How fast are we using up our error budget
+- 14.4, 6, 3 - standard values recommended by Google’s SRE team in their multi-window, multi-burn-rate alerting strategy. 
+- They're based on balancing 4 things:
+	Precision – fewer false alerts
+	Recall – don’t miss real problems
+	Detection time – fast detection
+	Reset time – alert clears quickly when things are fixed
+
+> How good alert rules are built?
+- Each alert uses two time windows:
+	A long window (e.g., 1 hour) → ensures good recall (catches real issues)
+	A short window (e.g., 5 min) → ensures precision and fast reset
+- Only if both windows show a high error rate (burn rate), the alert fires.
+
+	Automation in SRE
+	------------------
+Tools:
+Incident Management System (e.g., PagerDuty, Opsgenie)
+Work Tracking System (e.g., Jira, Azure Boards)
+Automation Pipelines (e.g., Azure DevOps, GitHub Actions)
+
+Fixes can happen in multiple places
+-----------------------------------
+Platform fixes itself - If an app crashes (like from OutOfMemory), Kubernetes can restart it.
+External Pipelines can fix issues too - Pipelines run outside your infrastructure, so they work even if your system is partly broken
+
+Automating Disaster Recovery (DR)
+----------------------------------
+Scenario:
+- An app runs 4 instances → 1 per server/node.
+- If 1 node fails: fine, platform replaces it.
+- If 2 nodes fail: serious issue → maybe spin up the DR environment.
+
+Manual Flow for alert triggering
+---------------------------------
+- Alert fires when node(s) go down.
+- Incident system sends a page to on-call SRE.
+- SRE checks if DR needs to start.
+- SRE manually starts DR.
+- If things get worse, SRE switches to DR.
+
+Automated flow of alert triggering
+-----------------------------------
+- Same alert fires.
+- Triggers a pipeline (not a human).
+- Pipeline 1: Starts DR environment.
+If problem continues:
+- Pipeline 2: Switches traffic to DR.
+
+How alert triggers automation
+------------------------------
+- Prometheus sees too many instances down → triggers an alert.
+- Alert Manager catches the alert → sends a message (webhook).
+- That message goes to GitHub, which runs a workflow:
+- If it’s a half outage (50%) → start DR
+- If it’s a major outage(>75%) → switch traffic to DR
+- If system gets better → switch back to normal and stop DR
+
+	   		     send alert		   trigger by calling webhook	       convert webhook format to GitHub format
+Alert triggers in Prometheus--------->Alert manager -------------------->middleware component------------------>GitHub Actions
+middleware component - a piece of custom code in the platform. It control the communication between alert manager and GitHub actions
+
+Four golden signals for Automation
+-----------------------------------
+- Saturation (running out of resources):
+	Auto-increase disk or network capacity
+	Clear old data
+	Use faster network tier
+- Latency (things are slow):
+	Add cache
+	Create extra read-only database copies to handle load
+- Errors (things are failing):
+	Restart failing components
+	Disable buggy features via feature flags
+- Traffic (too much load):
+	Auto-scale services
+	Spread traffic across regions using DNS
+
+Scenario:
+---------
+- An app has normal login(NL) and experimental login(EL). Sometimes the EL slows down. Nina wants to automatically turn off the experimental login when it slows the app down.
+
+- How It Works:
+
+Step 1:Monitoring SLO (Latency Target)
+	SLO - “95% of login requests must finish in 0.5 seconds.”
+	If the app gets too slow, it means the SLO is broken.
+Step 2:Triggering an Alert
+	Prometheus watches for this problem.
+	When latency goes above the limit, it sends an alert.
+Step 3:Starting the Fix
+	The alert goes to Alertmanager, which sends a message (webhook).
+	A small program (middleware) receives the alert and translates it into a format GitHub Actions can understand.		
+	GitHub Actions then runs a workflow (a script) that does this:
+		Logs into Azure.
+		Finds the app configuration setting UseExperimentalIdp.
+		Changes it from true to false — stopping the use of the slow provider.
+
+	AI in SRE
+	---------
+Generative AI – Your Smart Assistant
+	Monitoring queries (e.g., PromQL)
+	Code for small fixes or tools
+	Dashboard configs 
+AIOps – AI for Incident Management
+
+AIOps manage the entire monitoring and alerting process
+---------------------------------------------------------
+- Observability data (metrics, logs, traces) from OpenTelemetry gets pushed into the AIOps platform.
+- The platform watches the system during normal conditions and learns what good performance looks like.
+- Based on what it sees, it recommends Service Level Objectives (SLOs).
+- The SRE team reviews and approves these.
+- AI builds dashboards and alert rules — no need to manually define metrics or thresholds.
+- If performance drops, the platform:
+	Detects it automatically
+	Sends smart alerts that include:
+	  Related logs and traces
+	  Root cause analysis
+	  Suggested solutions (based on past incidents)
+- For serious outages, the platform writes the incident report:
+	What happened, when
+	What caused it
+	What to fix
+
+Datadog’s AIOps
+-----------------
+Automatic issue detection	✅ Yes, with Watchdog AI
+Root cause analysis		✅ Yes, with logs, traces, deployment diffs
+No manual setup			✅ For many features, but not all
+Security insights		✅ Yes, with severity and exploitability
+Smart alerts			✅ Yes, including AI suggestions
+Workflow automation		✅ Yes, with generative AI
+Custom SLO setup		🚧 Still needs manual input
+
+Manual fixing
+Automated 
+AIOps 
+
+
 
 
 
