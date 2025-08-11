@@ -654,7 +654,103 @@ Manual fixing
 Automated 
 AIOps 
 
+-----------------------------------
+	GRAFANA LAB
+-----------------------------------
 
+Dashboards
+----------
+colors
+- Use strong colors sparingly for critical alerts or important metrics
+- Keep the rest of the visuals in neutral or muted tones 
+- Green: OK
+- orange: WARN
 
+size
+- Make important items larger, secondary data smaller.
 
+alignment
+- Keep text and values aligned in a predictable way so the eye can scan quickly.
+- Misalignment distracts and makes data harder to read.
+
+shapes
+- Stick to simple, consistent shapes for clarity.
+
+Key Takeaways for Grafana Dashboards
+-------------------------------------
+- Avoid red–green combinations — they are not color-blind friendly.
+- Use intuitive color meaning:
+	Red = bad, error, warning.
+	Green = good (only if paired with a color-blind-safe alternative).
+	Blue = normal/stable.
+- Test your dashboard for accessibility using color-blind simulators.
+- Use more than color to show meaning — add icons, labels, or patterns.
+
+Service Dashboard
+-----------------
+USE method = infrastructure view
+RED method = service/application view
+
+RED method
+----------
+R → Rate – How many requests is your service handling?
+	   Example: requests per second or transactions per minute.
+	   Tells you how busy the system is.
+E → Errors – How many of those requests are failing?
+	     Example: HTTP 5xx errors, failed queries, timeouts.
+	     Shows how healthy the service is.
+D → Duration – How long is it taking to handle each request?	
+	       Example: latency in ms, response time percentiles.
+	       Shows how fast the system is responding.
+
+USE method
+----------
+U → Utilization – How busy is the resource?
+S → Saturation – How much extra work is waiting?
+E → Errors – How many errors has the resource seen?
+
+Example: CPU (USE method)
+- Utilization: 85% CPU busy time.
+- Saturation: 3 processes waiting per CPU core.
+- Errors: CPU hardware error logs show 0 faults.
+
+Example: Disk (USE method)
+- Utilization: 70% busy.
+- Saturation: queue length of 10 writes.
+- Errors: 2 read failures in last hour.
+
+Library Panel - Saves a panel to a shared library in Grafana so it can be inserted into multiple dashboards
+Reuse Panel - Duplicates a panel within the same dashboard but keeps it independent from the original
+Copy Panel - Makes a full duplicate of an existing panel into the same or another dashboard
+
+Best practices for dashboard
+----------------------------
+- use bright colors for most import data and light color for least important one
+- use regular and simple shapes 
+- Make important items larger, secondary data smaller.
+- use annotated panel
+- use organized dashboard
+- geographic view is good other than country code
+- use alternative options other than standard time series panel
+- If you want one change to update everywhere → Library Panel.
+- If you want each version to be unique → Copy/Reuse Panel.
+
+3 levels of alerting maturity in Grafana Cloud
+-----------------------------------------------
+1. Reactive – Grafana Alerting
+	- You only get alerts after an issue occurs.
+	Example:
+	A CPU usage alert triggers when CPU > 90% for 5 minutes.
+	By the time you see it, users might already be impacted.
+
+2. Proactive – Error Budget Alerts & SLOs
+	- Alerts are based on Service Level Objectives (SLOs) and error budgets, helping you detect problems before they violate your service commitments.		
+	Example:	
+	Instead of waiting for 100% outage, you get an alert when your error budget burn rate is unusually 
+
+3. Predictive – Adaptive Alerts
+	- Uses data trends and models to predict issues before they happen.
+	Example:
+	Detecting that CPU load is following a trend that will exceed safe limits in 30 minutes.
+	Alerts are triggered based on forecasts rather than past data alone.
 
