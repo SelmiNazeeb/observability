@@ -1,0 +1,84 @@
+	----------
+  	  SPLUNK
+	----------
+- Splunk instance
+- App home
+	> This is the main starting page for a specific Splunk App
+	> App in Splunk is like a Set of features built to solve a specific problem
+	> Apps are defined by a user with an administrator role
+	> EG: there is an app for security monitoring and another for IT operations. When you open an app, you land on its "App Home" page.
+
+- Roles : Roles are a way to manage what users can and cannot do in Splunk
+  > Administrator Role
+	- Can do everything
+	- create knowledge objects for users ()
+	- Full control over the Splunk instance, including managing all users, roles, system settings, and installing apps
+  > Power Role
+	- can create and share all knowledge objects and perform real time searches ()
+	- Can create and share reports, dashboards, and alerts
+	- Can "tag" events to make searching easier for others
+  > User Role
+	- see only own knowledge objects and those shared with them ()
+	- Can search and run their own reports and dashboards. But can't share to others
+	- view data they are given access to
+
+knowledge objects
+-------------------
+- Saved Searches, Reports & Dashboards, Tags, look up tables
+- lookup table : your Splunk data don't have a a column u want . u created another file with 2 columns in which one is in Splunk data and other is new. then 
+                 said Splunk to compare both and ask for some search u want and got the information u want
+- tags :  you can use a single tag to find all related events instead of multiple terms. eg; u want 'failed' and 'denied' logs, u can create a tags named 	  'authentication failure' for failed and denied. then whenever u want u can just use that tag.
+- reports and dashboard : u search some data using a complex command and save that as a report/dashboard. then if u want that again u can just click on that 			  report or if any friend want to see, u can share the report to them.
+
+- Table views
+- transforming commands : commands that create statistics and visualization 
+- By default a search job will remain active for 10 minutes
+- shared search job will remain active for 7 days
+- export formats : xml, raw data, Jason, csv
+- search modes : Fast mode, smart mode, Verbose mode
+	> Fast
+	  - field discovery disabled
+   	  - designed for performance
+	  - returns your search results as quickly as possible
+	  - It only returns the essential, default fields and fields you explicitly search for
+	> verbose
+	  - designed for completeness
+	  - It will return as much information as possible from your data, but it will take longer to run.
+	  - best for Troubleshooting, debugging
+	> smart
+	  - automatically decides whether to act like Fast or Verbose mode depends on your search
+	  - If your search includes a command that creates a report (like stats or chart), it behaves like Fast Mode to give you the results quickly.
+	  - If you're just looking for events without a reporting command, it acts like Verbose Mode to show you all the available details.
+
+searching terms
+---------------
+- wild card
+	Examples:-
+	- error*: This will find any words that start with "error," such as error, errors, error_code, and erroneous.
+	- *fail*: This will find any words that contain "fail," such as failed, failure, login_fail, and fatal_fail.
+	- host-web-??: While not a wildcard, you can use ? in some systems to represent a single character, as in this example where you could search for 	  host-web-01 or host-web-02
+- Boolean operation - NOT, OR, AND . parenthesis () can use to control the evaluation
+- escape character in search (\)
+
+search language of Splunk - build from 5 components
+----------------------------------------------------
+search terms : foundation of search queries. starting point of every search. (login)
+commands : tells what we want to do with search results (creating charts, computing statistics, formatting)
+	   You use a pipe (|) to start a command (login| stats)
+functions : explain how we want to chart, compute and evaluate results (login| stats count)
+arguments : variables we want to apply to the function
+clause : how we want result grouped or defined
+
+- All are not case sensitive. But command values are case sensitives
+
+- Data interpretation
+- Data classification
+- Data enrichment
+- Data normalization
+- Data models
+
+- classic dashboard: older and are best for quickly creating a simple, functional view of your data.
+- Dashboard Studio: new, modern tool that gives you much more control and flexibility to create a professional and visually appealing dashboard.
+
+- layout in dashboard studio : grid, absolute
+- choose Grid for simplicity and automatic alignment, and choose Absolute for total creative control and custom design elements
