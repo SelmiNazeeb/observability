@@ -1,6 +1,8 @@
 	----------
   	  SPLUNK
 	----------
+Splunk is a complete data analytics tool that doesn’t just create dashboards, but also collects data from different sources, stores it in an organized way, and lets you search, analyze, and understand that data. It can handle logs, metrics, and traces from almost any system.
+
 - Splunk instance
 - App home
 	> This is the main starting page for a specific Splunk App
@@ -81,4 +83,249 @@ clause : how we want result grouped or defined
 - Dashboard Studio: new, modern tool that gives you much more control and flexibility to create a professional and visually appealing dashboard.
 
 - layout in dashboard studio : grid, absolute
+
 - choose Grid for simplicity and automatic alignment, and choose Absolute for total creative control and custom design elements
+
+Grafana vs splunk
+------------------
+
+- Grafana is primarily a visualization and monitoring tool. It’s excellent for creating real-time dashboards and connecting with multiple data sources like Prometheus, InfluxDB, Elasticsearch, etc.
+- flexible for metrics and time-series monitoring
+- real-time metrics monitoring and dashboards,
+
+- splunk is not only visualizes data but also collects, indexes, searches, and analyzes machine data (logs, metrics, and traces) from almost any source.
+- focus is log analysis, security, troubleshooting, or centralized data search, Splunk is better.
+
+----------------------
+video 2 - use field
+----------------------
+interested fields
+# - numerals
+a - string value
+
+field search query
+- field name : case sensitive
+- value : not case sensitive
+- field operators : =, != (with numerical/ string values)
+		    >, >=, <, <= (with numerical values)
+
+index=security sourcetype=linux_secure action=failure host!="mail*" 
+index=security sourcetype=linux_secure action=failure NOT host="mail*" 
+
+	index=security → Search only inside the security index (the storage area where security-related data/logs are kept).
+	sourcetype=linux_secure → Look for events that came from the linux_secure sourcetype (usually Linux authentication or security logs).
+	action=failure → Filter logs where the field action has the value failure (failed login attempts, failed actions, etc.).
+	host!="mail"* → Exclude all events where the host field starts with mail (for example, mailserver1, mailhost2, etc.)
+
+(index=web OR index=security) status!=200 : This only applies if the field status exists. If an event has no status field, it will not include.
+(index=web OR index=security) NOT status=200 : This applies if the field not status exists also. If an event has no status field, it will include.
+
+| field
+----------
++ : include
+- : exclude
+
+index=web status IN ("500", "503", "505")
+| fields status
+| stats count by status
+
+	Filter only events where the status field is 500, 503, or 505.
+	keeps only the status field in the results and removes other fields.
+	Count how many events occurred for each status
+
+With fields status → Only status field is visible in the result.
+Without it → Result is the same, but Splunk internally keeps extra fields.
+
+|rename
+--------
+to rename fields in your search
+
+index=web status IN ("500", "503", "505")
+| fields status
+| stats count by status
+| rename status as "HTTP status" , count as "Number of occurrence"
+
+| eval
+--------
+It’s like a calculator inside Splunk.
+
+index=network sourcetype=cisco_wsa_squid
+| stats sum(sc_bytes) as Bytes by usage
+| eval bandwidth = Bytes/1024/1024
+
+	Search inside the network index and Only look at logs that have the sourcetype cisco_wsa_squid
+	Sum all values in sc_bytes field. Rename the result as Bytes and grouping by usage
+	Convert the Bytes field into Megabytes (MB) by dividing by 1024/1024. come with as new field bandwidth
+
+|erex 
+--------------
+Extract fields using examples
+
+index=games sourcetype=SimCubeBeta
+| erex Character fromfield=_raw examples="pixie, Kooby"
+| where isnull(Character)
+
+	Search in the games index and Filter logs with sourcetype SimCubeBeta
+	extract a new field called Character from the raw event text (_raw).
+	Splunk uses the given examples (pixie, Kooby) to figure out a regex pattern and extract similar values from events
+
+|rex
+---------
+extract fields using a regex pattern
+
+^[^'\n]*'(?P<User>[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9.]+)'\s[a-zA-Z: ]+'(?P<Character>[a-zA-Z0-9.-]+)
+
+explanation
+^[^'\n]*'
+	^ : start of the line
+	[^'\n]* : any characters except ' or newline, repeated
+	' : literal single quote
+👉 This skips some initial text until it finds '.
+
+(?P<User>[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9.]+)
+	(?P<User> … ) : named capture group called User
+	[a-zA-Z0-9_.-]+ : username part (letters, numbers, dot, underscore, dash)
+	@ : the @ symbol
+	[a-zA-Z0-9-]+ : domain name (letters, numbers, dash)
+	\. : dot
+	[a-zA-Z0-9.]+ : domain extension (.com, .net, etc.)
+👉 This captures an email address as the User field.
+
+\s[a-zA-Z: ]+
+	\s : a space
+	[a-zA-Z: ]+ : some words (letters, colon, space)
+👉 Example: “ plays character: ”
+
+'(?P<Character>[a-zA-Z0-9.-]+)
+	' : literal quote
+	(?P<Character>[a-zA-Z0-9.-]+) : named capture group Character (letters, numbers, dot, dash)
+👉 This captures the character name.
+
+field alias
+------------
+A field alias is like giving a field an alternative name.
+u can give same name to different fields.
+u can searcg the field using alias name or its orginal name is possible
+
+Field Extractions → Pull data out of raw logs.
+Field Aliases → Give alternate names.
+Calculated Fields → Derive new values.
+Lookups → Enrich with external info.
+Event Types → Categorize similar events.
+Tags → Apply human-friendly labels.
+
+--------------------------
+video 3 - visualization
+--------------------------
+internal Splunk fields - _raw, _time
+
+|table
+--------
+- transforming command
+- make tabular
+- field command improve efficiency of search over table command → Improves efficiency because it limits which fields
+
+|dedup
+-------
+It only keeps the first occurrence of a duplicate and drops the rest.
+
+|addtotals
+------------
+compute sum of all numeric field for each row
+
+index=sales sourcetype=vendor_sales product_name=* VendorCountry="United States" OR VendorCountry="Canada"
+| chart sum(price) over product_name by VendorCountry
+| addtotals col=true label="Total Sales" labelfield="product_name" fieldname="Total By Product" row=false
+
+|fieldformat
+-------------
+index=sales sourcetype=vendor_sales product_name=* VendorCountry="United States" OR VendorCountry="Canada"
+| chart sum(price) over product_name by VendorCountry
+| addtotals col=true label="Total Sales" labelfield="product_name" fieldname="Total By Product" row=false
+|fieldformat "$" + tostring(Total, "commas")  -> output will be like $6,434
+
+commands that used to transform search results to visualization
+------------------------------------------------------------------
+|top
+-----
+index=sales sourcetype=vendor_sales	
+|top vendor sales=20  (without 20 it wil display top 10 results. limit=0 give all results)
+
+|rare
+------
+- Finds the least common values of a field in your data (opposite of top).
+- Useful when you want to see unusual or rare events
+
+|stats
+-------
+- A general aggregation command to calculate metrics like count, sum, avg, max, etc.
+- Does not require time; works on the dataset as is.
+
+|chart
+-------
+- Similar to stats, but optimized for two-dimensional aggregation → X-axis and series.
+- Output is structured for visual charts
+- 2D aggregation for charting (x + series)
+
+|timechart
+----------
+- Like chart, but time-aware.
+- Automatically buckets data into time intervals (span=).
+- Used for trending data over time.
+- time-based aggregation (good for trends).
+
+|trendline
+------------
+The trendline command is used in Splunk to add moving averages to your search results. It helps smooth out fluctuations and identify trends over time.
+- SMA (Simple Moving Average)
+     Formula: Average of the last n data points.
+     Each point is weighted equally.
+- EMA (Exponential Moving Average)
+     Formula: Weighted average where recent data points have more weight.
+     Reacts faster to new trends compared to SMA.
+- WMA (Weighted Moving Average)
+     Formula: Each point has a specific weight, usually giving more importance to recent data.
+     Unlike EMA, the weights are linear (e.g., last 3 points: weights 1, 2, 3).
+
+clauses
+-------
+as
+by
+over
+
+|iplocation
+------------
+- The iplocation command looks up an IP address field and adds geographical information (like country, city, latitude, longitude, etc.) to your events.
+- It uses a built-in GeoIP database in Splunk.
+- adds new fields:
+	Country
+	City
+	Region
+	Latitude
+	Longitude
+
+|geostat
+---------
+- geostats is like stats, but geography-aware.
+- It aggregates events by geographic location (latitude/longitude) and produces results that can be plotted on a map.
+- Commonly used with iplocation.
+
+choropleth map
+------------------
+- A choropleth map is a type of map where regions (countries, states, provinces, etc.) are shaded/colored based on data values.
+- Example: Darker shade = more logins from that country.
+- In Splunk, you use:
+    iplocation → to convert IPs into geo info (Country, City, lat/long).
+    geostats → to aggregate values by geo fields.
+    geom → to overlay boundaries (like country outlines) and enable choropleth visualization.
+- Cluster map → shows dots (geostats with lat/long).
+- Choropleth map → colors regions (geom with geo lookups).
+
+|geom
+------
+- The geom command in Splunk is used to draw geographic shapes (polygons) on a map, enabling choropleth visualizations.
+- It matches your search results with a geo lookup dataset (like geo_countries or geo_us_states) and shades the corresponding region on the map.
+
+single value visualizations
+visual formatting
+chart overlay - feature that lets you overlay multiple data series on the same chart for comparison.
