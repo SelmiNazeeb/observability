@@ -329,3 +329,148 @@ choropleth map
 single value visualizations
 visual formatting
 chart overlay - feature that lets you overlay multiple data series on the same chart for comparison.
+
+-----------------------------
+video 4 : working with time
+-----------------------------
+- Every event in Splunk has a field called _time.
+- _time is the main timestamp field in Splunk.
+- This represents when the event actually happened (taken from the log data).
+- If Splunk can’t find a timestamp in the raw data, it uses the time when the event was indexed.
+
+1. Searching by time
+- You can choose a time range (last 15 minutes, last 7 days, custom, etc.)
+- Example:
+  index=web earliest=-24h latest=now
+
+2.Formatting time
+- You can display _time in different formats using strftime.
+- Example:
+  ... | eval date=strftime(_time, "%Y-%m-%d %H:%M:%S")
+
+3. Extracting parts of time
+- You can pull out just the hour, day, or month.
+- Example:
+  ... | eval hour=strftime(_time, "%H")
+
+Timestamp in Raw Logs vs _time in Splunk
+------------------------------------------
+- Written inside the log/event itself - time stamp in raw logs
+- Just a string inside the raw data, not directly usable for analysis 
+- Splunk assigns _time as the index time (the moment the data was ingested) - splunk time
+
+- @ : rounds down (snaps) to the nearest unit you specify.
+Examples
+--------
+1. -30m@h
+	Meaning: Go back 30 minutes, then snap to the nearest hour.
+	If now is 09:45, Splunk snaps to 09:00.
+	So it looks back to 09:00:00 on April 1, 2021.
+
+2. earliest=-h@h
+	Meaning: Set earliest time to 1 hour ago, snapped to the nearest hour.
+	If now is 09:45, 1 hour ago is 08:45, snap to hour = 08:00.
+	So it rounds down to 08:00:00 on April 1, 2021.
+
+3. earliest=-mon@mon latest=@mon
+	Meaning: From the start of the previous Monday to the start of this Monday.
+	Example: If today is April 1 (Thursday), it will look back to 00:00:00 March 1, 2021 (Monday) and end at 00:00:00 April 1, 2021 (Monday).
+
+4. earliest=-7d@d
+	Meaning: 7 days ago, snapped to the beginning of that day.
+	If today is April 1, 2021, it looks from 00:00:00 on March 25, 2021 to now (09:45:00 on April 1, 2021).
+
+5. earliest=@d+3h
+	Meaning: Start from today’s midnight (@d = 00:00 today), then add 3 hours.
+	So on April 1, 2021 → it starts from 03:00:00 up to the current time (09:45:00)
+
+Relative Time Modifiers ( <timeUnit> ) in Splunk
+--------------------------------------------------
+Current date & time - now
+Second - s, sec, secs, second, seconds
+Minute - m, min, minute, minutes
+Hour - h, hr, hrs, hour, hours
+Day - d, day, days
+Week - w, week, weeks
+Days of the week - w1 (Monday) … w6 (Saturday), w7 or w0 (Sunday) EG: earliest=@w1
+Month - mon, month, months
+Quarter - q, qtr, qtrs, quarter, quarters
+Year - y, yr, yrs, year, years
+
+date_*
+-------
+- When Splunk processes events, it automatically extracts the timestamp and then generates additional fields that start with date_*
+- Events with timestamps have date_* fields
+  Example: if your log says 2025-09-02 10:15:30, Splunk creates:
+	date_hour=10
+	date_mday=2
+	date_month=9
+	date_year=2025
+	date_minute=15
+	date_second=30
+	date_wday=2 (Tuesday)
+
+index=sales sourcetype=vendor_sales earliest=-2d@d latest=@d date_hour>=2 AND date_hour<5
+| bin span=1h _time
+| stats sum(price) as "Hourly Sales" by _time
+| eval Hour = strftime(_time, "%b %d, %I %p")
+
+explanation
+------------
+- index=sales sourcetype=vendor_sales → Look in the sales index for events with vendor_sales sourcetype.
+- earliest=-2d@d → Start from 2 days ago at midnight.
+- latest=@d → End at today’s midnight.
+- date_hour>=2 AND date_hour<5 → Only take events between 2 AM and 4:59 AM.
+- bin span=1h _time → Groups (bins) all events into 1-hour intervals based on _time.
+- stats sum(price) as "Hourly Sales" by _time → Calculates the total sales amount (sum of price) per hour
+- eval Hour = strftime(_time, "%b %d, %I %p")
+	Creates a new field called Hour.
+	Formats _time into a readable format:
+	%b → Month short name (May)
+	%d → Day of the month (12)
+	%I → Hour (12-hour format)
+	%p → AM/PM
+Example output: May 12, 02 AM.
+
+strftime(X, "format")
+----------------------
+Converts epoch time → human readable string.
+Example:
+	| eval hour = strftime(_time, "%b %d, %I %p")
+	👉 Turns 1661941200 → Sep 01, 03 PM.
+
+strptime("string", "format")
+-----------------------------
+Converts human readable string → epoch time.
+Example:	
+	| eval epoch_time = strptime("2021-04-20 16:00", "%Y-%m-%d %H:%M")
+	👉 Turns 2021-04-20 16:00 → 1618934400
+Format Variables in the Image
+-----------------------------
+⏰ Time
+%H → Hour (00–23, 24-hour format)
+%T → Time in HH:MM:SS format
+%I → Hour (01–12, 12-hour format)
+%M → Minute (00–59)
+%p → AM or PM
+
+📅 Days
+%d → Day of month (01–31)
+%w → Weekday number (0=Sunday → 6=Saturday)
+%a → Abbreviated weekday (Sun)
+%A → Full weekday (Sunday)
+%F → Date in YYYY-MM-DD
+
+📆 Months & Years
+%b → Abbreviated month (Jan)
+%B → Full month (January)
+%m → Month number (01–12)
+%Y → Year (2020)
+
+- time bucket means grouping events into fixed time intervals.
+  Example: instead of showing every raw event, you group them into 5-minute, 1-hour, or 1-day windows
+
+- span is the keyword used to define the size of your time bucket.  
+  Examples: span=10m → bucket events into 10-minute intervals.
+
+timewrap - Splunk command that lets you compare data across different time periods on the same chart.
