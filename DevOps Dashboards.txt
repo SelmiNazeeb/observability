@@ -4,8 +4,11 @@ DevOps Dashboards
 	Track the Four Key Performance Metrics for software delivery
 
 - Deployment Frequency – How often code is deployed to production. Monitoring deployments per day/week shows agility.
+						 The more often you deploy, the faster your users get new features or bug fixes.
 - Lead Time for Changes – Time from code commit to production deployment; shorter lead times suggest efficient pipelines.
+						  time period b/w receiving order and delivering to the customer
 - Change Failure Rate (CFR) – Percentage of deployments causing failures (e.g., rollbacks, incidents).
+							 It tells us how often a new code change/ causes problems after it’s deployed.
 - Mean Time to Recovery (MTTR) – Time taken to restore service after a failure.
 
 2. Pipeline Health & Efficiency Dashboard
@@ -64,6 +67,5 @@ Grafana Loki
 Elasticsearch 
 Logstash 
 Splunk 
-Cloud-native tools
-	AWS CloudWatch
-	Azure Monitor
+Grafana
+Kibana
