@@ -1,0 +1,69 @@
+DevOps Dashboards
+-------------------
+1. DORA Metrics Dashboard
+	Track the Four Key Performance Metrics for software delivery
+
+- Deployment Frequency – How often code is deployed to production. Monitoring deployments per day/week shows agility.
+- Lead Time for Changes – Time from code commit to production deployment; shorter lead times suggest efficient pipelines.
+- Change Failure Rate (CFR) – Percentage of deployments causing failures (e.g., rollbacks, incidents).
+- Mean Time to Recovery (MTTR) – Time taken to restore service after a failure.
+
+2. Pipeline Health & Efficiency Dashboard
+	Focus on internal pipeline metrics:
+
+- CI Runs per Day – Number of builds or tests executed daily.
+- CI Success Rate – Percent of builds/tests that pass on the first try.
+- PR Size – Average lines changed per pull request—smaller PRs usually mean faster reviews and lower risk.
+
+3. System Stability & Infrastructure Dashboard
+	Monitor system health and performance:
+
+- Availability / Uptime – Percentage of time services are operational.
+- Resource Utilization – CPU, memory, disk I/O, and network usage.
+- Change Failure Rate – To reflect service reliability metrics in duo with DORA.
+
+4. Issue/Error Tracking Dashboard
+	Surface error trends and issue resolution rates:
+
+- Number of Errors – Track frequent error codes (e.g., 404, 500).
+- Issue Volume & Types – Count of tickets/issues over time, broken down by severity/type.
+
+5. Cost & Efficiency Dashboard
+	Bring FinOps insights into the DevOps workflow:
+
+- Cloud Cost Metrics – Cost per deployment, service, team, or transaction.
+- Infrastructure Cost per Transaction – Helps manage and optimize resource spend.
+
+Security Dashboards
+----------------------
+1. Vulnerability & Risk Dashboard
+	Monitor security vulnerabilities and technical debt:
+
+- Vulnerability Open Rate (VOR) – How many vulnerabilities are detected per release.
+- Security Technical Debt (STD) – Count of unresolved security issues.
+- Mean Vulnerability Age (MVA) – Time since discovery to resolution.
+- Software Security Coverage (SSC) – Percentage of systems covered by security scans.
+
+2. Detection & Incident Response Dashboard
+	Track detection and response metrics:
+
+- Mean Time to Detect (MTTD) – How quickly your team notices a security incident.
+- Mean Time to Recovery (MTTR) – Time taken to remediate security incidents.
+
+3. Compliance & Logging Dashboard
+	Ensure regulatory and audit-readiness:
+
+- Log Coverage – Are all critical systems being logged and monitored?
+- Compliance Status – Visibility into GDPR, ISO 27001, SOC 2 adherence.
+- Alert Volumes – Counts of alerts, incidents, and false positives. 
+
+Tools for Collecting & Visualizing Data for metrics
+-----------------------------------------------------
+Prometheus
+Grafana Loki 
+Elasticsearch 
+Logstash 
+Splunk 
+Cloud-native tools
+	AWS CloudWatch
+	Azure Monitor
