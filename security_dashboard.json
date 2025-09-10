@@ -1,0 +1,933 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 31,
+  "links": [],
+  "panels": [
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 8,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"color: black; background-color: #ADD8E6\n; padding: 10px; text-align: center;\">\n  <h1>Security Incident Dashboard</h1>\n</div>",
+        "mode": "markdown"
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "title": "",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "description": "How fast teams acknowledge/respond.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 3,
+        "x": 0,
+        "y": 2
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "/^response_time_min$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "response_time_min",
+              "text": "",
+              "type": "number"
+            }
+          ],
+          "data": "timestamp,incident_id,incident_type,severity,status,affected_systems,assigned_team,response_time_min,resolution_time_min\n2025-09-01 09:00,INC-1001,Phishing,High,Open,Email Gateway,SOC,15,120\n2025-09-01 09:00,INC-1002,Malware,Medium,Closed,HR Workstation,Endpoint,20,90\n2025-09-01 11:00,INC-1003,DDoS,High,Open,Public Website,Network,30,0\n2025-09-01 12:30,INC-1004,Unauthorized Access,Critical,Closed,Database,SOC,10,180\n2025-09-01 12:30,INC-1005,Vulnerability,Medium,In Progress,Web Server,AppSec,25,0\n2025-09-01 14:10,INC-1006,Phishing,Low,Closed,User Laptop,SOC,12,45\n2025-09-01 15:05,INC-1007,Ransomware,Critical,Open,Finance Server,Endpoint,35,0\n2025-09-01 16:25,INC-1008,Policy Violation,Low,Closed,Employee PC,Compliance,8,30\n2025-09-01 17:25,INC-1009,Malware,High,In Progress,Sales Laptop,Endpoint,18,0\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Mean Response Time",
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {
+            "includeTimeField": false,
+            "mode": "reduceFields",
+            "reducers": [
+              "mean"
+            ]
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "description": "How fast incidents are closed.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 3,
+        "x": 3,
+        "y": 2
+      },
+      "id": 7,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "/^resolution_time_min$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "resolution_time_min",
+              "text": "",
+              "type": "number"
+            }
+          ],
+          "data": "timestamp,incident_id,incident_type,severity,status,affected_systems,assigned_team,response_time_min,resolution_time_min\n2025-09-01 09:00,INC-1001,Phishing,High,Open,Email Gateway,SOC,15,120\n2025-09-01 09:00,INC-1002,Malware,Medium,Closed,HR Workstation,Endpoint,20,90\n2025-09-01 11:00,INC-1003,DDoS,High,Open,Public Website,Network,30,0\n2025-09-01 12:30,INC-1004,Unauthorized Access,Critical,Closed,Database,SOC,10,180\n2025-09-01 12:30,INC-1005,Vulnerability,Medium,In Progress,Web Server,AppSec,25,0\n2025-09-01 14:10,INC-1006,Phishing,Low,Closed,User Laptop,SOC,12,45\n2025-09-01 15:05,INC-1007,Ransomware,Critical,Open,Finance Server,Endpoint,35,0\n2025-09-01 16:25,INC-1008,Policy Violation,Low,Closed,Employee PC,Compliance,8,30\n2025-09-01 17:25,INC-1009,Malware,High,In Progress,Sales Laptop,Endpoint,18,0\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Mean Resolution Time",
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {
+            "includeTimeField": false,
+            "mode": "reduceFields",
+            "reducers": [
+              "mean"
+            ]
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "description": "Shows how many are Open, In Progress, Closed",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 9,
+        "x": 6,
+        "y": 2
+      },
+      "id": 3,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "status",
+              "text": "",
+              "type": "string"
+            },
+            {
+              "selector": "incident_id",
+              "text": "",
+              "type": "string"
+            }
+          ],
+          "data": "timestamp,incident_id,incident_type,severity,status,affected_systems,assigned_team,response_time_min,resolution_time_min\n2025-09-01 09:00,INC-1001,Phishing,High,Open,Email Gateway,SOC,15,120\n2025-09-01 09:00,INC-1002,Malware,Medium,Closed,HR Workstation,Endpoint,20,90\n2025-09-01 11:00,INC-1003,DDoS,High,Open,Public Website,Network,30,0\n2025-09-01 12:30,INC-1004,Unauthorized Access,Critical,Closed,Database,SOC,10,180\n2025-09-01 12:30,INC-1005,Vulnerability,Medium,In Progress,Web Server,AppSec,25,0\n2025-09-01 14:10,INC-1006,Phishing,Low,Closed,User Laptop,SOC,12,45\n2025-09-01 15:05,INC-1007,Ransomware,Critical,Open,Finance Server,Endpoint,35,0\n2025-09-01 16:25,INC-1008,Policy Violation,Low,Closed,Employee PC,Compliance,8,30\n2025-09-01 17:25,INC-1009,Malware,High,In Progress,Sales Laptop,Endpoint,18,0\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Incident Status",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "incident_id": {
+                "aggregations": [
+                  "count"
+                ],
+                "operation": "aggregate"
+              },
+              "status": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        }
+      ],
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "description": "Visualizes severity distribution",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 9,
+        "x": 15,
+        "y": 2
+      },
+      "id": 2,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "severity",
+              "text": "",
+              "type": "string"
+            },
+            {
+              "selector": "incident_id",
+              "text": "",
+              "type": "string"
+            }
+          ],
+          "data": "timestamp,incident_id,incident_type,severity,status,affected_systems,assigned_team,response_time_min,resolution_time_min\n2025-09-01 09:00,INC-1001,Phishing,High,Open,Email Gateway,SOC,15,120\n2025-09-01 09:00,INC-1002,Malware,Medium,Closed,HR Workstation,Endpoint,20,90\n2025-09-01 11:00,INC-1003,DDoS,High,Open,Public Website,Network,30,0\n2025-09-01 12:30,INC-1004,Unauthorized Access,Critical,Closed,Database,SOC,10,180\n2025-09-01 12:30,INC-1005,Vulnerability,Medium,In Progress,Web Server,AppSec,25,0\n2025-09-01 14:10,INC-1006,Phishing,Low,Closed,User Laptop,SOC,12,45\n2025-09-01 15:05,INC-1007,Ransomware,Critical,Open,Finance Server,Endpoint,35,0\n2025-09-01 16:25,INC-1008,Policy Violation,Low,Closed,Employee PC,Compliance,8,30\n2025-09-01 17:25,INC-1009,Malware,High,In Progress,Sales Laptop,Endpoint,18,0\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Incidents by Severity",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "incident_id": {
+                "aggregations": [
+                  "count"
+                ],
+                "operation": "aggregate"
+              },
+              "severity": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        }
+      ],
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "assigned_team"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 138
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "incident_id (count)"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 123
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 5,
+        "x": 0,
+        "y": 8
+      },
+      "id": 5,
+      "options": {
+        "cellHeight": "sm",
+        "showHeader": true
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "assigned_team",
+              "text": "",
+              "type": "string"
+            },
+            {
+              "selector": "incident_id",
+              "text": "",
+              "type": "string"
+            }
+          ],
+          "data": "timestamp,incident_id,incident_type,severity,status,affected_systems,assigned_team,response_time_min,resolution_time_min\n2025-09-01 09:00,INC-1001,Phishing,High,Open,Email Gateway,SOC,15,120\n2025-09-01 09:00,INC-1002,Malware,Medium,Closed,HR Workstation,Endpoint,20,90\n2025-09-01 11:00,INC-1003,DDoS,High,Open,Public Website,Network,30,0\n2025-09-01 12:30,INC-1004,Unauthorized Access,Critical,Closed,Database,SOC,10,180\n2025-09-01 12:30,INC-1005,Vulnerability,Medium,In Progress,Web Server,AppSec,25,0\n2025-09-01 14:10,INC-1006,Phishing,Low,Closed,User Laptop,SOC,12,45\n2025-09-01 15:05,INC-1007,Ransomware,Critical,Open,Finance Server,Endpoint,35,0\n2025-09-01 16:25,INC-1008,Policy Violation,Low,Closed,Employee PC,Compliance,8,30\n2025-09-01 17:25,INC-1009,Malware,High,In Progress,Sales Laptop,Endpoint,18,0\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Incidents by Team",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "assigned_team": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "incident_id": {
+                "aggregations": [
+                  "count"
+                ],
+                "operation": "aggregate"
+              }
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "description": "Shows how many incidents are happening per hour/day",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 5,
+        "y": 8
+      },
+      "id": 1,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "timestamp",
+              "text": "",
+              "type": "timestamp"
+            },
+            {
+              "selector": "incident_id",
+              "text": "",
+              "type": "string"
+            }
+          ],
+          "data": "timestamp,incident_id,incident_type,severity,status,affected_systems,assigned_team,response_time_min,resolution_time_min\n2025-09-01 09:00,INC-1001,Phishing,High,Open,Email Gateway,SOC,15,120\n2025-09-01 09:00,INC-1002,Malware,Medium,Closed,HR Workstation,Endpoint,20,90\n2025-09-01 11:00,INC-1003,DDoS,High,Open,Public Website,Network,30,0\n2025-09-01 12:30,INC-1004,Unauthorized Access,Critical,Closed,Database,SOC,10,180\n2025-09-01 12:30,INC-1005,Vulnerability,Medium,In Progress,Web Server,AppSec,25,0\n2025-09-01 14:10,INC-1006,Phishing,Low,Closed,User Laptop,SOC,12,45\n2025-09-01 15:05,INC-1007,Ransomware,Critical,Open,Finance Server,Endpoint,35,0\n2025-09-01 16:25,INC-1008,Policy Violation,Low,Closed,Employee PC,Compliance,8,30\n2025-09-01 17:25,INC-1009,Malware,High,In Progress,Sales Laptop,Endpoint,18,0\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Incident Volume Over Time",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "incident_id": {
+                "aggregations": [
+                  "count"
+                ],
+                "operation": "aggregate"
+              },
+              "timestamp": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "description": "Useful to see common attack categories.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 11,
+        "x": 13,
+        "y": 8
+      },
+      "id": 4,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "incident_id",
+              "text": "",
+              "type": "string"
+            },
+            {
+              "selector": "incident_type",
+              "text": "",
+              "type": "string"
+            }
+          ],
+          "data": "timestamp,incident_id,incident_type,severity,status,affected_systems,assigned_team,response_time_min,resolution_time_min\n2025-09-01 09:00,INC-1001,Phishing,High,Open,Email Gateway,SOC,15,120\n2025-09-01 09:00,INC-1002,Malware,Medium,Closed,HR Workstation,Endpoint,20,90\n2025-09-01 11:00,INC-1003,DDoS,High,Open,Public Website,Network,30,0\n2025-09-01 12:30,INC-1004,Unauthorized Access,Critical,Closed,Database,SOC,10,180\n2025-09-01 12:30,INC-1005,Vulnerability,Medium,In Progress,Web Server,AppSec,25,0\n2025-09-01 14:10,INC-1006,Phishing,Low,Closed,User Laptop,SOC,12,45\n2025-09-01 15:05,INC-1007,Ransomware,Critical,Open,Finance Server,Endpoint,35,0\n2025-09-01 16:25,INC-1008,Policy Violation,Low,Closed,Employee PC,Compliance,8,30\n2025-09-01 17:25,INC-1009,Malware,High,In Progress,Sales Laptop,Endpoint,18,0\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Incident Types Breakdown",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "incident_id": {
+                "aggregations": [
+                  "count"
+                ],
+                "operation": "aggregate"
+              },
+              "incident_type": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        }
+      ],
+      "type": "barchart"
+    }
+  ],
+  "preload": false,
+  "schemaVersion": 42,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "2025-09-01T09:00:00.000Z",
+    "to": "2025-09-01T17:25:00.000Z"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Security Metrics Dashboard -sel",
+  "uid": "obv2jv4",
+  "version": 14
+}
