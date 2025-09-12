@@ -1,0 +1,2521 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 0,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 4,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^A$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "targets": [
+        {
+          "columns": [],
+          "data": "Metric,Value\nTotal Order,205\nOrder Completed,129\nOrder Created,18\nOrder Checkout,0\nOrder Received,0\nOrder Cancelled,14\nOrder Submitted,35\nIoT Order Failed,0\nOrder (NULL Status),0\nOrder Expired,0\nOrder Failed,6\nPost Order Processing Error,1\nPre Order Processing Error,0\nOrder Submitted (Delinquency),3\nDelinquency Order (Post Order Error),0\nDelinquency Order (Pre Order Error),0\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Total Order",
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": "Total Order"
+                  }
+                },
+                "fieldName": "Metric"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 12,
+        "x": 4,
+        "y": 0
+      },
+      "id": 17,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"color: white; background-color: #FF1493; padding: 10px; text-align: left;\">\n  <h1>Normal Order Status</h1>\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "title": "",
+      "type": "text"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 8,
+        "x": 16,
+        "y": 0
+      },
+      "id": 18,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"color: white; background-color: #FF1493; padding: 10px; text-align: left;\">\n  <h1>Abnormal Order Status</h1>\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "title": "",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 4,
+        "y": 2
+      },
+      "id": 2,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^A$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "targets": [
+        {
+          "columns": [],
+          "data": "Metric,Value\nTotal Order,205\nOrder Completed,129\nOrder Created,18\nOrder Checkout,0\nOrder Received,0\nOrder Cancelled,14\nOrder Submitted,35\nIoT Order Failed,0\nOrder (NULL Status),0\nOrder Expired,0\nOrder Failed,6\nPost Order Processing Error,1\nPre Order Processing Error,0\nOrder Submitted (Delinquency),3\nDelinquency Order (Post Order Error),0\nDelinquency Order (Pre Order Error),0\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Order Completed",
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": "Order Completed"
+                  }
+                },
+                "fieldName": "Metric"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 8,
+        "y": 2
+      },
+      "id": 3,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^A$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "targets": [
+        {
+          "columns": [],
+          "data": "Metric,Value\nTotal Order,205\nOrder Completed,129\nOrder Created,18\nOrder Checkout,0\nOrder Received,0\nOrder Cancelled,14\nOrder Submitted,35\nIoT Order Failed,0\nOrder (NULL Status),0\nOrder Expired,0\nOrder Failed,6\nPost Order Processing Error,1\nPre Order Processing Error,0\nOrder Submitted (Delinquency),3\nDelinquency Order (Post Order Error),0\nDelinquency Order (Pre Order Error),0\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Order Created",
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": "Order Created"
+                  }
+                },
+                "fieldName": "Metric"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 12,
+        "y": 2
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^A$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "targets": [
+        {
+          "columns": [],
+          "data": "Metric,Value\nTotal Order,205\nOrder Completed,129\nOrder Created,18\nOrder Checkout,0\nOrder Received,0\nOrder Cancelled,14\nOrder Submitted,35\nIoT Order Failed,0\nOrder (NULL Status),0\nOrder Expired,0\nOrder Failed,6\nPost Order Processing Error,1\nPre Order Processing Error,0\nOrder Submitted (Delinquency),3\nDelinquency Order (Post Order Error),0\nDelinquency Order (Pre Order Error),0\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Order Checkout",
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": "Order Checkout"
+                  }
+                },
+                "fieldName": "Metric"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 16,
+        "y": 2
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^A$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "targets": [
+        {
+          "columns": [],
+          "data": "Metric,Value\nTotal Order,205\nOrder Completed,129\nOrder Created,18\nOrder Checkout,0\nOrder Received,0\nOrder Cancelled,14\nOrder Submitted,35\nIoT Order Failed,0\nOrder (NULL Status),0\nOrder Expired,0\nOrder Failed,6\nPost Order Processing Error,1\nPre Order Processing Error,0\nOrder Submitted (Delinquency),3\nDelinquency Order (Post Order Error),0\nDelinquency Order (Pre Order Error),0\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "IoT Order Failed",
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": "IoT Order Failed"
+                  }
+                },
+                "fieldName": "Metric"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 20,
+        "y": 2
+      },
+      "id": 11,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^A$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "targets": [
+        {
+          "columns": [],
+          "data": "Metric,Value\nTotal Order,205\nOrder Completed,129\nOrder Created,18\nOrder Checkout,0\nOrder Received,0\nOrder Cancelled,14\nOrder Submitted,35\nIoT Order Failed,0\nOrder (NULL Status),0\nOrder Expired,0\nOrder Failed,6\nPost Order Processing Error,1\nPre Order Processing Error,0\nOrder Submitted (Delinquency),3\nDelinquency Order (Post Order Error),0\nDelinquency Order (Pre Order Error),0\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Order (NULL Status)",
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": "Order (NULL Status)"
+                  }
+                },
+                "fieldName": "Metric"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 4,
+        "y": 6
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^A$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "targets": [
+        {
+          "columns": [],
+          "data": "Metric,Value\nTotal Order,205\nOrder Completed,129\nOrder Created,18\nOrder Checkout,0\nOrder Received,0\nOrder Cancelled,14\nOrder Submitted,35\nIoT Order Failed,0\nOrder (NULL Status),0\nOrder Expired,0\nOrder Failed,6\nPost Order Processing Error,1\nPre Order Processing Error,0\nOrder Submitted (Delinquency),3\nDelinquency Order (Post Order Error),0\nDelinquency Order (Pre Order Error),0\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Order Received",
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": "Order Received"
+                  }
+                },
+                "fieldName": "Metric"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 8,
+        "y": 6
+      },
+      "id": 5,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^A$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "targets": [
+        {
+          "columns": [],
+          "data": "Metric,Value\nTotal Order,205\nOrder Completed,129\nOrder Created,18\nOrder Checkout,0\nOrder Received,0\nOrder Cancelled,14\nOrder Submitted,35\nIoT Order Failed,0\nOrder (NULL Status),0\nOrder Expired,0\nOrder Failed,6\nPost Order Processing Error,1\nPre Order Processing Error,0\nOrder Submitted (Delinquency),3\nDelinquency Order (Post Order Error),0\nDelinquency Order (Pre Order Error),0\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Order Cancelled",
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": "Order Cancelled"
+                  }
+                },
+                "fieldName": "Metric"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "title": "OrderSub",
+              "url": "https://observabilityust.grafana.net/d/obr9xd7/et-order-insights-base-dashboard?orgId=1&var-table_name=OrderSubmitted"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 12,
+        "y": 6
+      },
+      "id": 7,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^A$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "targets": [
+        {
+          "columns": [],
+          "data": "Metric,Value\nTotal Order,205\nOrder Completed,129\nOrder Created,18\nOrder Checkout,0\nOrder Received,0\nOrder Cancelled,14\nOrder Submitted,35\nIoT Order Failed,0\nOrder (NULL Status),0\nOrder Expired,0\nOrder Failed,6\nPost Order Processing Error,1\nPre Order Processing Error,0\nOrder Submitted (Delinquency),3\nDelinquency Order (Post Order Error),0\nDelinquency Order (Pre Order Error),0\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Order Submitted",
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": "Order Submitted"
+                  }
+                },
+                "fieldName": "Metric"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 16,
+        "y": 6
+      },
+      "id": 9,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^A$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "targets": [
+        {
+          "columns": [],
+          "data": "Metric,Value\nTotal Order,205\nOrder Completed,129\nOrder Created,18\nOrder Checkout,0\nOrder Received,0\nOrder Cancelled,14\nOrder Submitted,35\nIoT Order Failed,0\nOrder (NULL Status),0\nOrder Expired,0\nOrder Failed,6\nPost Order Processing Error,1\nPre Order Processing Error,0\nOrder Submitted (Delinquency),3\nDelinquency Order (Post Order Error),0\nDelinquency Order (Pre Order Error),0\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Order Expired",
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": "Order Expired"
+                  }
+                },
+                "fieldName": "Metric"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "title": "OrderFail",
+              "url": "https://observabilityust.grafana.net/d/obr9xd7/et-order-insights-base-dashboard?orgId=1&var-table_name=OrderFailed"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 20,
+        "y": 6
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^A$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "targets": [
+        {
+          "columns": [],
+          "data": "Metric,Value\nTotal Order,205\nOrder Completed,129\nOrder Created,18\nOrder Checkout,0\nOrder Received,0\nOrder Cancelled,14\nOrder Submitted,35\nIoT Order Failed,0\nOrder (NULL Status),0\nOrder Expired,0\nOrder Failed,6\nPost Order Processing Error,1\nPre Order Processing Error,0\nOrder Submitted (Delinquency),3\nDelinquency Order (Post Order Error),0\nDelinquency Order (Pre Order Error),0\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Order Failed",
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": "Order Failed"
+                  }
+                },
+                "fieldName": "Metric"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 10
+      },
+      "id": 19,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"color: white; background-color: #FF1493; padding: 10px; text-align: left;\">\n  <h1>Failed Order Details</h1>\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "title": "",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "targetBlank": false,
+              "title": "PostOrder",
+              "url": "https://observabilityust.grafana.net/d/obr9xd7/et-order-insights-base-dashboard?orgId=1&var-table_name=PostOrderProcessingError"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 0,
+        "y": 12
+      },
+      "id": 13,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^A$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "targets": [
+        {
+          "columns": [],
+          "data": "Metric,Value\nTotal Order,205\nOrder Completed,129\nOrder Created,18\nOrder Checkout,0\nOrder Received,0\nOrder Cancelled,14\nOrder Submitted,35\nIoT Order Failed,0\nOrder (NULL Status),0\nOrder Expired,0\nOrder Failed,6\nPost Order Processing Error,1\nPre Order Processing Error,0\nOrder Submitted (Delinquency),3\nDelinquency Order (Post Order Error),0\nDelinquency Order (Pre Order Error),0\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Post Order Processing Error",
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": "Post Order Processing Error"
+                  }
+                },
+                "fieldName": "Metric"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "targetBlank": false,
+              "title": "PreOrder",
+              "url": "https://observabilityust.grafana.net/d/obr9xd7/et-order-insights-base-dashboard?orgId=1&var-table_name=PreOrderProcessingError"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 6,
+        "y": 12
+      },
+      "id": 12,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^A$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "targets": [
+        {
+          "columns": [],
+          "data": "Metric,Value\nTotal Order,205\nOrder Completed,129\nOrder Created,18\nOrder Checkout,0\nOrder Received,0\nOrder Cancelled,14\nOrder Submitted,35\nIoT Order Failed,0\nOrder (NULL Status),0\nOrder Expired,0\nOrder Failed,6\nPost Order Processing Error,1\nPre Order Processing Error,0\nOrder Submitted (Delinquency),3\nDelinquency Order (Post Order Error),0\nDelinquency Order (Pre Order Error),0\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Pre Order Processing Error",
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": "Pre Order Processing Error"
+                  }
+                },
+                "fieldName": "Metric"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "title": "OrderSubmitD",
+              "url": "https://observabilityust.grafana.net/d/obr9xd7/et-order-insights-base-dashboard?orgId=1&var-Delinquency=OrderSubmitted"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 12,
+        "y": 12
+      },
+      "id": 14,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^A$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "targets": [
+        {
+          "columns": [],
+          "data": "Metric,Value\nTotal Order,205\nOrder Completed,129\nOrder Created,18\nOrder Checkout,0\nOrder Received,0\nOrder Cancelled,14\nOrder Submitted,35\nIoT Order Failed,0\nOrder (NULL Status),0\nOrder Expired,0\nOrder Failed,6\nPost Order Processing Error,1\nPre Order Processing Error,0\nOrder Submitted (Delinquency),3\nDelinquency Order (Post Order Error),0\nDelinquency Order (Pre Order Error),0\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Order Submitted (Delinquency)",
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": "Order Submitted (Delinquency)"
+                  }
+                },
+                "fieldName": "Metric"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "title": "PreOrder",
+              "url": "https://observabilityust.grafana.net/d/obr9xd7/et-order-insights-base-dashboard?orgId=1&var-Delinquency=Deliquency Order (Pre Order Error)"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 18,
+        "y": 12
+      },
+      "id": 16,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^A$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "targets": [
+        {
+          "columns": [],
+          "data": "Metric,Value\nTotal Order,205\nOrder Completed,129\nOrder Created,18\nOrder Checkout,0\nOrder Received,0\nOrder Cancelled,14\nOrder Submitted,35\nIoT Order Failed,0\nOrder (NULL Status),0\nOrder Expired,0\nOrder Failed,6\nPost Order Processing Error,1\nPre Order Processing Error,0\nOrder Submitted (Delinquency),3\nDelinquency Order (Post Order Error),0\nDelinquency Order (Pre Order Error),0\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Delinquency Order (Pre Order Error)",
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": "Delinquency Order (Pre Order Error)"
+                  }
+                },
+                "fieldName": "Metric"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "footer": {
+              "reducers": []
+            },
+            "hideFrom": {
+              "viz": false
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#f700a1",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "OrderId"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 223
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "title": "orderid",
+                    "url": "https://observabilityust.grafana.net/d/obr9xd7/et-order-insights-base-dashboard?orgId=1&var-order_id=${__value.text}"
+                  }
+                ]
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Financial Account Number"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 256
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "SubStatusCode"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 269
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Ageing(Days)"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 118
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "StatusCode"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 195
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "OrderStatusDate"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 176
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ActivityId"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 359
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 12,
+        "x": 0,
+        "y": 15
+      },
+      "id": 20,
+      "options": {
+        "cellHeight": "sm",
+        "showHeader": true
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "targets": [
+        {
+          "columns": [],
+          "data": "OrderStatusDate,OrderId,StatusCode,Ageing(Days),SubStatusCode,ActivityId,Financial\n2025-09-10T20:00:00,68c1c5441a9b7b20ef683abc,PostOrderProcessingError,1,UpdateSubscription,08c0ecd4-8f0e-414e-ab34-a1463d7a53b3,2\n2025-09-11T09:00:00,68c444aaa9b7b20ef6831001,OrderSubmitted,1,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5301,202768001\n2025-09-11T09:05:00,68c444aaa9b7b20ef6831002,OrderSubmitted,1,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5302,202768002\n2025-09-11T09:10:00,68c444aaa9b7b20ef6831003,OrderSubmitted,1,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5303,202768003\n2025-09-11T09:15:00,68c444aaa9b7b20ef6831004,OrderSubmitted,1,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5304,202768004\n2025-09-11T09:20:00,68c444aaa9b7b20ef6831005,OrderSubmitted,2,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5305,202768005\n2025-09-11T09:25:00,68c444aaa9b7b20ef6831006,OrderSubmitted,2,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5306,202768006\n2025-09-11T09:30:00,68c444aaa9b7b20ef6831007,OrderSubmitted,2,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5307,202768007\n2025-09-11T09:35:00,68c444aaa9b7b20ef6831008,OrderSubmitted,2,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5308,202768008\n2025-09-11T09:40:00,68c444aaa9b7b20ef6831009,OrderSubmitted,3,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5309,202768009\n2025-09-11T09:45:00,68c444aaa9b7b20ef6831010,OrderSubmitted,3,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5310,202768010\n2025-09-11T09:50:00,68c444aaa9b7b20ef6831011,OrderSubmitted,3,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5311,202768011\n2025-09-11T09:55:00,68c444aaa9b7b20ef6831012,OrderSubmitted,3,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5312,202768012\n2025-09-11T10:00:00,68c444aaa9b7b20ef6831013,OrderSubmitted,4,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5313,202768013\n2025-09-11T10:05:00,68c444aaa9b7b20ef6831014,OrderSubmitted,4,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5314,202768014\n2025-09-11T10:10:00,68c444aaa9b7b20ef6831015,OrderSubmitted,4,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5315,202768015\n2025-09-11T10:15:00,68c444aaa9b7b20ef6831016,OrderSubmitted,4,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5316,202768016\n2025-09-11T10:20:00,68c444aaa9b7b20ef6831017,OrderSubmitted,5,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5317,202768017\n2025-09-11T10:25:00,68c444aaa9b7b20ef6831018,OrderSubmitted,5,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5318,202768018\n2025-09-11T10:30:00,68c444aaa9b7b20ef6831019,OrderSubmitted,5,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5319,202768019\n2025-09-11T10:35:00,68c444aaa9b7b20ef6831020,OrderSubmitted,5,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5320,202768020\n2025-09-11T10:40:00,68c444aaa9b7b20ef6831021,OrderSubmitted,6,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5321,202768021\n2025-09-11T10:45:00,68c444aaa9b7b20ef6831022,OrderSubmitted,6,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5322,202768022\n2025-09-11T10:50:00,68c444aaa9b7b20ef6831023,OrderSubmitted,6,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5323,202768023\n2025-09-11T10:55:00,68c444aaa9b7b20ef6831024,OrderSubmitted,6,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5324,202768024\n2025-09-11T11:00:00,68c444aaa9b7b20ef6831025,OrderSubmitted,7,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5325,202768025\n2025-09-11T11:05:00,68c444aaa9b7b20ef6831026,OrderSubmitted,7,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5326,202768026\n2025-09-11T11:10:00,68c444aaa9b7b20ef6831027,OrderSubmitted,7,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5327,202768027\n2025-09-11T11:15:00,68c444aaa9b7b20ef6831028,OrderSubmitted,7,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5328,202768028\n2025-09-11T11:20:00,68c444aaa9b7b20ef6831029,OrderSubmitted,8,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5329,202768029\n2025-09-11T11:25:00,68c444aaa9b7b20ef6831030,OrderSubmitted,8,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5330,202768030\n2025-09-11T11:30:00,68c444aaa9b7b20ef6831031,OrderSubmitted,8,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5331,202768031\n2025-09-11T11:35:00,68c444aaa9b7b20ef6831032,OrderSubmitted,8,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5332,202768032\n2025-09-11T11:40:00,68c444aaa9b7b20ef6831033,OrderSubmitted,9,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5333,202768033\n2025-09-11T11:45:00,68c444aaa9b7b20ef6831034,OrderSubmitted,9,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5334,202768034\n2025-09-11T11:50:00,68c444aaa9b7b20ef6831035,OrderSubmitted,9,OrderUpdatedAcknowledgement,08c0ecd4-8f0e-414e-ab34-a1463d7a5335,202768035\n2025-09-11T11:55:00,68c555aaa9b7b20ef6831005,OrderFailed,6,FailedReasonUnknown,cd57ebaf-e26d-4904-9819-ed87a7b41800,202768101\n2025-09-11T12:00:00,68c555aaa9b7b20ef6831006,OrderFailed,6,FailedReasonUnknown,cd57ebaf-e26d-4904-9819-ed87a7b41801,202768102\n2025-09-11T12:05:00,68c555aaa9b7b20ef6831007,OrderFailed,6,FailedReasonUnknown,cd57ebaf-e26d-4904-9819-ed87a7b41802,202768103\n2025-09-11T12:10:00,68c555aaa9b7b20ef6831008,OrderFailed,6,FailedReasonUnknown,cd57ebaf-e26d-4904-9819-ed87a7b41803,202768104\n2025-09-11T12:15:00,68c555aaa9b7b20ef6831009,OrderFailed,6,FailedReasonUnknown,cd57ebaf-e26d-4904-9819-ed87a7b41804,202768105\n2025-09-11T12:20:00,68c555aaa9b7b20ef6831010,OrderFailed,6,FailedReasonUnknown,cd57ebaf-e26d-4904-9819-ed87a7b41805,202768106\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "${table_name}",
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": "${table_name}"
+                  }
+                },
+                "fieldName": "StatusCode"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "ActivityId": 5,
+              "Ageing(Days)": 3,
+              "Financial": 6,
+              "OrderId": 1,
+              "OrderStatusDate": 0,
+              "StatusCode": 2,
+              "SubStatusCode": 4
+            },
+            "renameByName": {
+              "Financial": "Financial Account Number"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "title": "PostOrder",
+              "url": "https://observabilityust.grafana.net/d/obr9xd7/et-order-insights-base-dashboard?orgId=1&var-Delinquency=Deliquency Order (Post Order Error)"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 18,
+        "y": 15
+      },
+      "id": 15,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^A$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "targets": [
+        {
+          "columns": [],
+          "data": "Metric,Value\nTotal Order,205\nOrder Completed,129\nOrder Created,18\nOrder Checkout,0\nOrder Received,0\nOrder Cancelled,14\nOrder Submitted,35\nIoT Order Failed,0\nOrder (NULL Status),0\nOrder Expired,0\nOrder Failed,6\nPost Order Processing Error,1\nPre Order Processing Error,0\nOrder Submitted (Delinquency),3\nDelinquency Order (Post Order Error),0\nDelinquency Order (Pre Order Error),0\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Delinquency Order (Post Order Error)",
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": "Delinquency Order (Post Order Error)"
+                  }
+                },
+                "fieldName": "Metric"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "footer": {
+              "reducers": []
+            },
+            "hideFrom": {
+              "viz": false
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#f700a1",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "OrderId"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "title": "delic",
+                    "url": "https://observabilityust.grafana.net/d/obr9xd7/et-order-insights-base-dashboard?orgId=1&var-order_id=${__value.text}"
+                  }
+                ]
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ActivityId"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Ageing(Days)"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "FinancialAccountNo"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "StatusCode"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "SubStatusCode"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 12,
+        "y": 18
+      },
+      "id": 21,
+      "options": {
+        "cellHeight": "sm",
+        "showHeader": true
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "targets": [
+        {
+          "columns": [],
+          "data": "StatusCode,SubStatusCode,Ageing(Days),OrderId,ActivityId,FinancialAccountNo\nOrderSubmitted,OrderUpdatedAcknowledgement,1,68c1f60a1a9b7b20ef683ad5,cd57ebaf-e26d-4904-9819-ed87a7b41800,202768048\nOrderSubmitted,GenerateLineEventComplete,1,68c2552bb591293eb83949c,10e399fc-98d8-4346-b71e-dfb3e449ba39,985654905\nOrderSubmitted,GenerateLineEventComplete,0,68c262f6ed10915b84439f7,9134eb78-ffb5-4ab3-9c6d-f4604bd1efaf,985810678\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "${Delinquency}",
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": "${Delinquency}"
+                  }
+                },
+                "fieldName": "StatusCode"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "ActivityId": 4,
+              "Ageing(Days)": 3,
+              "FinancialAccountNo": 5,
+              "OrderId": 2,
+              "StatusCode": 0,
+              "SubStatusCode": 1
+            },
+            "renameByName": {
+              "FinancialAccountNo": "Financial Account Number"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "footer": {
+              "reducers": []
+            },
+            "hideFrom": {
+              "viz": false
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#f700a1",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Order ID"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Activity ID"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Result Description"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 24,
+        "x": 0,
+        "y": 30
+      },
+      "id": 22,
+      "options": {
+        "cellHeight": "sm",
+        "showHeader": true
+      },
+      "pluginVersion": "12.2.0-17556714384",
+      "targets": [
+        {
+          "columns": [],
+          "data": "Order ID,Activity ID,Result Description\n68c1c5441a9b7b20ef683abc,08c0ecd4-8f0e-414e-ab34-a1463d7a53b3,\"2025-09-10T20:00:00 INFO [PostOrderProcessingError] - SubStatus=UpdateSubscription, Ageing=1 day, Financial=2\"\n68c444aaa9b7b20ef6831001,08c0ecd4-8f0e-414e-ab34-a1463d7a5301,\"2025-09-11T09:00:00 INFO [OrderSubmitted] - SubStatus=OrderUpdatedAcknowledgement, Ageing=1 day, Financial=202768001\"\n68c444aaa9b7b20ef6831002,08c0ecd4-8f0e-414e-ab34-a1463d7a5302,\"2025-09-11T09:05:00 INFO [OrderSubmitted] - SubStatus=OrderUpdatedAcknowledgement, Ageing=1 day, Financial=202768002\"\n68c444aaa9b7b20ef6831003,08c0ecd4-8f0e-414e-ab34-a1463d7a5303,\"2025-09-11T09:10:00 INFO [OrderSubmitted] - SubStatus=OrderUpdatedAcknowledgement, Ageing=1 day, Financial=202768003\"\n68c444aaa9b7b20ef6831004,08c0ecd4-8f0e-414e-ab34-a1463d7a5304,\"2025-09-11T09:15:00 INFO [OrderSubmitted] - SubStatus=OrderUpdatedAcknowledgement, Ageing=1 day, Financial=202768004\"\n68c444aaa9b7b20ef6831005,08c0ecd4-8f0e-414e-ab34-a1463d7a5305,\"2025-09-11T09:20:00 INFO [OrderSubmitted] - SubStatus=OrderUpdatedAcknowledgement, Ageing=2 days, Financial=202768005\"\n68c444aaa9b7b20ef6831006,08c0ecd4-8f0e-414e-ab34-a1463d7a5306,\"2025-09-11T09:25:00 INFO [OrderSubmitted] - SubStatus=OrderUpdatedAcknowledgement, Ageing=2 days, Financial=202768006\"\n68c444aaa9b7b20ef6831007,08c0ecd4-8f0e-414e-ab34-a1463d7a5307,\"2025-09-11T09:30:00 INFO [OrderSubmitted] - SubStatus=OrderUpdatedAcknowledgement, Ageing=2 days, Financial=202768007\"\n68c444aaa9b7b20ef6831008,08c0ecd4-8f0e-414e-ab34-a1463d7a5308,\"2025-09-11T09:35:00 INFO [OrderSubmitted] - SubStatus=OrderUpdatedAcknowledgement, Ageing=2 days, Financial=202768008\"\n68c444aaa9b7b20ef6831009,08c0ecd4-8f0e-414e-ab34-a1463d7a5309,\"2025-09-11T09:40:00 INFO [OrderSubmitted] - SubStatus=OrderUpdatedAcknowledgement, Ageing=3 days, Financial=202768009\"\n68c444aaa9b7b20ef6831035,08c0ecd4-8f0e-414e-ab34-a1463d7a5335,\"2025-09-11T11:50:00 INFO [OrderSubmitted] - SubStatus=OrderUpdatedAcknowledgement, Ageing=9 days, Financial=202768035\"\n68c555aaa9b7b20ef6831005,cd57ebaf-e26d-4904-9819-ed87a7b41800,\"2025-09-11T11:55:00 ERROR [OrderFailed] - SubStatus=FailedReasonUnknown, Ageing=6 days, Financial=202768101\"\n68c555aaa9b7b20ef6831006,cd57ebaf-e26d-4904-9819-ed87a7b41801,\"2025-09-11T12:00:00 ERROR [OrderFailed] - SubStatus=FailedReasonUnknown, Ageing=6 days, Financial=202768102\"\n68c555aaa9b7b20ef6831007,cd57ebaf-e26d-4904-9819-ed87a7b41802,\"2025-09-11T12:05:00 ERROR [OrderFailed] - SubStatus=FailedReasonUnknown, Ageing=6 days, Financial=202768103\"\n68c555aaa9b7b20ef6831008,cd57ebaf-e26d-4904-9819-ed87a7b41803,\"2025-09-11T12:10:00 ERROR [OrderFailed] - SubStatus=FailedReasonUnknown, Ageing=6 days, Financial=202768104\"\n68c555aaa9b7b20ef6831009,cd57ebaf-e26d-4904-9819-ed87a7b41804,\"2025-09-11T12:15:00 ERROR [OrderFailed] - SubStatus=FailedReasonUnknown, Ageing=6 days, Financial=202768105\"\n68c555aaa9b7b20ef6831010,cd57ebaf-e26d-4904-9819-ed87a7b41805,\"2025-09-11T12:20:00 ERROR [OrderFailed] - SubStatus=FailedReasonUnknown, Ageing=6 days, Financial=202768106\"\nOrderId,ActivityId,Result Description\n68c444aaa9b7b20ef6831001,08c0ecd4-8f0e-414e-ab34-a1463d7a5301,\"2025-09-11T09:00:12 ERROR [OrderSubmitted] - SubStatus=OrderUpdatedAcknowledgement, Ageing=1 day, Financial=202768001\"\n68c444aaa9b7b20ef6831001,08c0ecd4-8f0e-414e-ab34-a1463d7a5301,\"2025-09-11T09:00:30 ERROR [OrderSubmitted] - SubStatus=OrderUpdatedAcknowledgement, Ageing=1 day, Financial=202768001\"\n68c444aaa9b7b20ef6831002,08c0ecd4-8f0e-414e-ab34-a1463d7a5302,\"2025-09-11T09:04:59 ERROR [OrderSubmitted] - SubStatus=OrderUpdatedAcknowledgement, Ageing=1 day, Financial=202768002\"\n68c444aaa9b7b20ef6831002,08c0ecd4-8f0e-414e-ab34-a1463d7a5302,\"2025-09-11T09:04:54 ERROR [OrderSubmitted] - SubStatus=OrderUpdatedAcknowledgement, Ageing=1 day, Financial=202768002\"\n68c444aaa9b7b20ef6831004,08c0ecd4-8f0e-414e-ab34-a1463d7a5304,\"2025-09-11T09:14:59 ERROR [OrderSubmitted] - SubStatus=OrderUpdatedAcknowledgement, Ageing=1 day, Financial=202768004\"\n68c444aaa9b7b20ef6831004,08c0ecd4-8f0e-414e-ab34-a1463d7a5304,\"2025-09-11T09:14:55 ERROR [OrderSubmitted] - SubStatus=OrderUpdatedAcknowledgement, Ageing=1 day, Financial=202768004\"\n68c1f60a1a9b7b20ef683ad5,cd57ebaf-e26d-4904-9819-ed87a7b41800,\"2025-09-11T09:35:00 INFO [OrderSubmitted] - SubStatus=OrderUpdatedAcknowledgement, Ageing=1 day, Financial=202768048\"\n68c2552bb591293eb83949c,10e399fc-98d8-4346-b71e-dfb3e449ba39,\"2025-09-11T09:45:00 INFO [OrderSubmitted] - SubStatus=GenerateLineEventComplete, Ageing=1 day, Financial=985654905\"\n68c262f6ed10915b84439f7,9134eb78-ffb5-4ab3-9c6d-f4604bd1efaf,\"2025-09-11T09:20:00 INFO [OrderSubmitted] - SubStatus=GenerateLineEventComplete, Ageing=0 day, Financial=985810678\"\n68c1f60a1a9b7b20ef683ad5,cd57ebaf-e26d-4904-9819-ed87a7b41800,\"2025-09-11T09:25:00 ERROR [OrderSubmitted] - SubStatus=OrderUpdatedAcknowledgement, Ageing=1 day, Financial=202768048\"\n68c2552bb591293eb83949c,10e399fc-98d8-4346-b71e-dfb3e449ba39,\"2025-09-11T09:51:00 ERROR[OrderSubmitted] - SubStatus=GenerateLineEventComplete, Ageing=1 day, Financial=985654905\"\n68c262f6ed10915b84439f7,9134eb78-ffb5-4ab3-9c6d-f4604bd1efaf,\"2025-09-11T09:19:00 ERROR [OrderSubmitted] - SubStatus=GenerateLineEventComplete, Ageing=0 day, Financial=985810678\"\n68c1f60a1a9b7b20ef683ad5,cd57ebaf-e26d-4904-9819-ed87a7b41800,\"2025-09-11T09:29:00 ERROR [OrderSubmitted] - SubStatus=OrderUpdatedAcknowledgement, Ageing=1 day, Financial=202768048\"\n68c262f6ed10915b84439f7,9134eb78-ffb5-4ab3-9c6d-f4604bd1efaf,\"2025-09-11T09:34:00 ERROR [OrderSubmitted] - SubStatus=GenerateLineEventComplete, Ageing=0 day, Financial=985810678\"\n\n\n\n\n\n\n\n\n\n\n\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Detailed Log",
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": "${order_id}"
+                  }
+                },
+                "fieldName": "Order ID"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "Activity ID": 1,
+              "Order ID": 0,
+              "Result Description": 2
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    }
+  ],
+  "preload": false,
+  "schemaVersion": 42,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": ".*",
+        "current": {
+          "text": "OrderFailed",
+          "value": "OrderFailed"
+        },
+        "description": "",
+        "includeAll": true,
+        "name": "table_name",
+        "options": [
+          {
+            "selected": false,
+            "text": "PostOrderProcessingError",
+            "value": "PostOrderProcessingError"
+          },
+          {
+            "selected": false,
+            "text": "PreOrderProcessingError",
+            "value": "PreOrderProcessingError"
+          },
+          {
+            "selected": false,
+            "text": "OrderSubmitted",
+            "value": "OrderSubmitted"
+          },
+          {
+            "selected": true,
+            "text": "OrderFailed",
+            "value": "OrderFailed"
+          }
+        ],
+        "query": "PostOrderProcessingError ,PreOrderProcessingError, OrderSubmitted, OrderFailed",
+        "type": "custom"
+      },
+      {
+        "current": {
+          "text": "OrderSubmitted",
+          "value": "OrderSubmitted"
+        },
+        "includeAll": true,
+        "name": "Delinquency",
+        "options": [
+          {
+            "selected": true,
+            "text": "OrderSubmitted",
+            "value": "OrderSubmitted"
+          },
+          {
+            "selected": false,
+            "text": "Deliquency Order (Pre Order Error)",
+            "value": "Deliquency Order (Pre Order Error)"
+          },
+          {
+            "selected": false,
+            "text": "Deliquency Order (Post Order Error)",
+            "value": "Deliquency Order (Post Order Error)"
+          }
+        ],
+        "query": "OrderSubmitted, Deliquency Order (Pre Order Error), Deliquency Order (Post Order Error)",
+        "type": "custom"
+      },
+      {
+        "current": {
+          "text": "68c262f6ed10915b84439f7",
+          "value": "68c262f6ed10915b84439f7"
+        },
+        "includeAll": true,
+        "name": "order_id",
+        "options": [
+          {
+            "selected": false,
+            "text": "68c1c5441a9b7b20ef683abc",
+            "value": "68c1c5441a9b7b20ef683abc"
+          },
+          {
+            "selected": false,
+            "text": "68c444aaa9b7b20ef6831001",
+            "value": "68c444aaa9b7b20ef6831001"
+          },
+          {
+            "selected": false,
+            "text": "68c444aaa9b7b20ef6831002",
+            "value": "68c444aaa9b7b20ef6831002"
+          },
+          {
+            "selected": false,
+            "text": "68c444aaa9b7b20ef6831003",
+            "value": "68c444aaa9b7b20ef6831003"
+          },
+          {
+            "selected": false,
+            "text": "68c444aaa9b7b20ef6831004",
+            "value": "68c444aaa9b7b20ef6831004"
+          },
+          {
+            "selected": false,
+            "text": "68c444aaa9b7b20ef6831005",
+            "value": "68c444aaa9b7b20ef6831005"
+          },
+          {
+            "selected": false,
+            "text": "68c444aaa9b7b20ef6831006",
+            "value": "68c444aaa9b7b20ef6831006"
+          },
+          {
+            "selected": false,
+            "text": "68c444aaa9b7b20ef6831007",
+            "value": "68c444aaa9b7b20ef6831007"
+          },
+          {
+            "selected": false,
+            "text": "68c444aaa9b7b20ef6831008",
+            "value": "68c444aaa9b7b20ef6831008"
+          },
+          {
+            "selected": false,
+            "text": "68c444aaa9b7b20ef6831009",
+            "value": "68c444aaa9b7b20ef6831009"
+          },
+          {
+            "selected": false,
+            "text": "68c444aaa9b7b20ef6831035",
+            "value": "68c444aaa9b7b20ef6831035"
+          },
+          {
+            "selected": false,
+            "text": "68c555aaa9b7b20ef6831005",
+            "value": "68c555aaa9b7b20ef6831005"
+          },
+          {
+            "selected": false,
+            "text": "68c555aaa9b7b20ef6831006",
+            "value": "68c555aaa9b7b20ef6831006"
+          },
+          {
+            "selected": false,
+            "text": "68c555aaa9b7b20ef6831007",
+            "value": "68c555aaa9b7b20ef6831007"
+          },
+          {
+            "selected": false,
+            "text": "68c555aaa9b7b20ef6831008",
+            "value": "68c555aaa9b7b20ef6831008"
+          },
+          {
+            "selected": false,
+            "text": "68c555aaa9b7b20ef6831009",
+            "value": "68c555aaa9b7b20ef6831009"
+          },
+          {
+            "selected": false,
+            "text": "68c555aaa9b7b20ef6831010",
+            "value": "68c555aaa9b7b20ef6831010"
+          },
+          {
+            "selected": false,
+            "text": "68c1f60a1a9b7b20ef683ad5",
+            "value": "68c1f60a1a9b7b20ef683ad5"
+          },
+          {
+            "selected": false,
+            "text": "68c2552bb591293eb83949c",
+            "value": "68c2552bb591293eb83949c"
+          },
+          {
+            "selected": true,
+            "text": "68c262f6ed10915b84439f7",
+            "value": "68c262f6ed10915b84439f7"
+          }
+        ],
+        "query": "68c1c5441a9b7b20ef683abc,68c444aaa9b7b20ef6831001,68c444aaa9b7b20ef6831002,68c444aaa9b7b20ef6831003,68c444aaa9b7b20ef6831004,68c444aaa9b7b20ef6831005,68c444aaa9b7b20ef6831006,68c444aaa9b7b20ef6831007,68c444aaa9b7b20ef6831008,68c444aaa9b7b20ef6831009,68c444aaa9b7b20ef6831035,68c555aaa9b7b20ef6831005,68c555aaa9b7b20ef6831006,68c555aaa9b7b20ef6831007,68c555aaa9b7b20ef6831008,68c555aaa9b7b20ef6831009,68c555aaa9b7b20ef6831010, 68c1f60a1a9b7b20ef683ad5, 68c2552bb591293eb83949c, 68c262f6ed10915b84439f7\n",
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "ET Order Insights Base Dashboard",
+  "uid": "obr9xd7",
+  "version": 70
+}
